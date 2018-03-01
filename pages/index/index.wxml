@@ -1,0 +1,300 @@
+<!--index.wxml-->
+<scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px;z-index:0;position:relative;" scroll-y="true" bindscrolltolower="searchScrollLower">
+  <view hidden="{{indexshow}}">
+
+    <view class="">
+      <view class="groupbox container" hidden="{{allgroupshow}}">
+        <!-- rongw： 头部tab -->
+        <view class="toptabbox bggray">
+          <view class="tabbox {{toptabnow}}">
+            <text class="tab1" id="tab1" bindtap="toptapfunc">{{toptab1}}</text>
+            <image class="iconimg" src="../image/add.png" catchtap='toptagfunc'></image>
+          </view>
+          <view class="tabbox {{toptabnow2}}" bindtap="toptapfunc2">
+            <text class="tab2" id="tab1">{{toptab2}}</text>
+          </view>
+        </view>
+          
+          <!-- <view class="tabadd" bindtap="addgroup">
+              <image class="iconimg" src="../image/qungliao.png"></image>
+            </view> -->
+          <!-- rongw：群标签 -->
+          <view class="dwt" hidden="{{tagshow}}"></view>
+          <view class="bggray tagbox" hidden="{{tagshow}}">
+            <view class="tagintro">
+              <block wx:for="{{tagname.tagid.length}}">
+                <text class="tagitem" id="{{tagname.tagid[item]}}" bindtap="tagchoose">{{tagname.tagname[item]}}</text>
+              </block>
+            </view>
+            <image style="transform:rotate(90deg);width:17px;height:30px;margin:0 auto;" src="../image/back.png" bindtap="topdefault"></image>
+          </view>
+          <!-- rongw: content -->
+
+          <view class="content">
+
+            <view class="contentli" hidden="{{othergroup}}" wx:for="{{group.url.length}}" bindtap="opinfo" id="{{item}}">
+              <view class="groupimgbox">
+                <image class="groupimg" src="{{group.url[item]}}">
+                </image>
+              </view>
+
+              <view class="groupinbox">
+                <view class="groupinfo">
+                  <text class="groupname flexrow"><text class="ellipsis" style="max-width:100px;display:inline-block;">{{group.groupname[item]}}</text>
+                  <text class="groupperson" hidden="{{group.groupinfo[item].length==0 ? true : false}}">{{group.groupinfo[item]}}</text></text>
+                  <text class="groupintro ellipsis">{{group.groupintro[item]}}</text>
+                  <text></text>
+                </view>
+                <view class="groupstatus">
+                  <text class="groupstatustext" status="{{group.groupstatus[item]}}" catchtap="funcname{{group.groupstatus[item]}}" id="{{item}}">{{group.grouptag[item]}}</text>
+
+                </view>
+              </view>
+
+            </view>
+
+            <!-- rongw: 我的群 -->
+            <view class="contentli" hidden="{{mygroupshow}}" bindtap="groupdetail" wx:for="{{mygroup.url.length}}" id="{{mygroup.groupid[item]}}">
+              <view class="groupimgbox">
+                <image class="groupimg" src="{{mygroup.url[item]}}" class="groupimg">
+                </image>
+              </view>
+
+              <view class="groupinbox">
+
+                <view class="groupinfo">
+                
+                  <!-- <text class="groupname">{{mygroup.groupname[item]}}<text class="groupperson ellipsis" hidden="{{mygroup.groupinfo[item].length==0 ? true : false}}">{{mygroup.groupinfo[item]}}</text></text>
+                  <text class="groupintro ellipsis">{{mygroup.groupintro[item]}}</text>
+                  <text></text> -->
+<text class="groupname flexrow"><text class="ellipsis" style="max-width:100px;display:inline-block;">{{mygroup.groupname[item]}}</text>
+                  <text class="groupperson" hidden="{{mygroup.groupinfo[item].length==0 ? true : false}}">{{mygroup.groupinfo[item]}}</text></text>
+                  <text class="groupintro ellipsis">{{mygroup.groupintro[item]}}</text>
+                  <text></text>
+                  
+                  
+                </view>
+                <view class="groupstatus">
+                <!-- hidden='{{mygroup.grouptag[item]==0?true:false}}' -->
+                  <text class="groupstatustext redicon right" status="{{mygroup.groupstatus[item]}}" catchtap="funcname{{mygroup.groupstatus[item]}}">{{mygroup.grouptag[item]}}</text>
+                  <text class="{{thismygroup[item]}}"></text>
+                </view>
+
+              </view>
+
+            </view>
+          </view>
+
+
+      </view>
+      <view class="myonwn" hidden="{{myownshow}}">
+        <!-- rongw: 我的名片 -->
+        <view class="cardbox" style="background-image:url('../image/myback.png');background-repeat:repeat;background-size:contain;">
+          <swiper bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <swiper-item catchtap="myaccount">
+              <view class="mycard">
+                <!-- 我的个人信息 -->
+                <view class="groupimgbox">
+                  <image class="groupimgs" src="{{userimage}}" background-size="cover"></image>
+                </view>
+                <view class="libox">
+                  <view class="pdb2 flexrow" style="height:5px;margin-top:30px;">
+                    <text style="max-width:150px;display:inline-block;" class="p1 ellipsis">{{username}}</text>
+                    <!-- <text class="textpd1">{{usersex}}</text> -->
+                    <text class="textpd2 picon" hidden="{{usertable==''?true:false}}">{{usertable}}</text>
+                  </view>
+                  <view>
+                    <!-- <image class="iconimg" src="../image/addr.png"></image> 
+                <text>{{useraddr}}</text> -->
+                    <image class="iconimg" src="../image/job.png"></image>
+                    <text class="p3 icontext">{{userarea}}</text>
+                    <image class="iconimg pdl24" src="../image/birth.png"></image>
+                    <text class="p3 icontext2">{{userage}}</text>
+                  </view>
+
+                </view>
+              </view>
+            </swiper-item>
+            <swiper-item catchtap="myaccount">
+              <view class="mycard">
+                <!-- 我的个人信息 -->
+                <view class="myintro">
+                  {{userintro}}
+                </view>
+
+                <view class="pdb2 flexrow">
+                  <block class="libox" wx:for="{{usertag}}">
+                    <text class="p1 mytagitem">{{item}}</text>
+                  </block>
+                </view>
+
+              </view>
+            </swiper-item>
+          </swiper>
+          <view class="flexrow dotcontent">
+            <text class="dot {{dotnow1}}" bindtap="currentChange"></text>
+            <text class="dot {{dotnow2}}" bindtap="currentChange"></text>
+          </view>
+        </view>
+        <view class="flexrow tidingnumb">
+          <view class="flexcolum">
+            <text class="numb">{{viewCount}}</text>
+            <text>浏览</text>
+          </view>
+          <view class="flexcolum">
+            <text class="numb">{{friendCount}}</text>
+            <text>人脉</text>
+          </view>
+          <view class="flexcolum">
+            <text class="numb">{{shareCount}}</text>
+            <text>分享</text>
+          </view>
+        </view>
+
+        <!-- rongw： 我的动态 -->
+        <view class="flexrow mytiding" bindtap="mydynamic">
+          <image class="iconimg" src="../image/dynamic.png"></image>
+          <text>我的动态</text>
+          <view class="p4 right">
+            <image mode="widthFix" style="width:8px;margin-top:6px;" src="../image/back.png"></image>
+          </view>
+        </view>
+
+
+        <!-- rongw： 我的其他情况 -->
+        <view class="flexrow mylist" bindtap="myinfo">
+          <image class="iconimg" src="../image/myinfo.png"></image>
+          <text>我的消息</text>
+          <text class="right redinfo" hidden="{{myinfonum == 0 ? true : false}}">{{myinfonum}}</text>
+          <view class="p4 right">
+            <image mode="widthFix" style="width:8px;margin-top:6px;" src="../image/back.png"></image>
+          </view>
+        </view>
+        <view class="flexrow mylist" bindtap="myaddrbook">
+          <image class="iconimg" src="../image/myaddrbox.png"></image>
+          <text>我的通讯录</text>
+          <view class="p4 right">
+            <image mode="widthFix" style="width:8px;margin-top:6px;" src="../image/back.png"></image>
+          </view>
+        </view>
+        <view class="flexrow mylist" bindtap="myaddrcircle">
+          <image class="iconimg" src="../image/myaddrcircle.png"></image>
+          <text>我的通讯录圈</text>
+          <view class="p4 right">
+            <image mode="widthFix" style="width:8px;margin-top:6px;" src="../image/back.png"></image>
+          </view>
+        </view>
+        <view class="flexrow mylist" bindtap="mycollect">
+          <image class="iconimg" src="../image/collect.png"></image>
+          <text>收藏</text>
+          <view class="p4 right">
+            <image mode="widthFix" style="width:8px;margin-top:6px;" src="../image/back.png"></image>
+          </view>
+        </view>
+        <view class="flexrow mylist" bindtap="myvip">
+          <image class="iconimg" src="../image/vip.png"></image>
+          <text>成为vip</text>
+          <view class="p4 right">
+            <image mode="widthFix" style="width:8px;margin-top:6px;" src="../image/back.png"></image>
+          </view>
+        </view>
+        <view class="flexrow mylist" bindtap="myaboutus">
+          <image class="iconimg" src="../image/aboutus.png"></image>
+          <text>关于我们</text>
+          <view class="p4 right">
+            <image mode="widthFix" style="width:8px;margin-top:6px;" src="../image/back.png"></image>
+          </view>
+        </view>
+
+        <!-- rongw: 是否开启ai小搭 -->
+        <view class="flexrow mylist xiaoda">
+          <image class="iconimg" src="../image/tuijian.png"></image>
+          <text>AI小搭群推荐服务</text>
+          <switch checked="{{isneedhelp==0 ? false : true}}" size="20" class="right switch" bindchange="switchChange" id="1" />
+        </view>
+
+
+      </view>
+
+      <!-- rongw: bottom -->
+      <view class="bottombox">
+        <view class="bottomtap {{bottomnow1}}" bindtap="bottomtab1">
+          <image class="iconimg" hidden="{{bottomnow1 == 'bottomnow' ? true : false}}" src="../image/qung.png"></image>
+          <image hidden="{{bottomnow1 == 'bottomnow' ? false : true}}" class="iconimg" src="../image/qung2.png"></image>
+          <text>{{tap[0]}}</text>
+
+        </view>
+        <view class="bottomtap {{bottomnow2}}" bindtap="bottomtab2">
+          <image class="iconimg" hidden="{{bottomnow2=='bottomnow' ? true : false}}" src="../image/my.png"></image>
+          <image hidden="{{bottomnow2 == 'bottomnow' ? false : true}}" class="iconimg" src="../image/my2.png"></image>
+          <text>{{tap[1]}}</text>
+
+        </view>
+      </view>
+
+      <!-- rongw: join a group -->
+      <view class="dwt" hidden="{{joinshow}}"></view>
+      <view class="joingroup" hidden="{{joinshow}}">
+
+        <view class="infobox">
+
+          <form bindsubmit='joinsubmit' bindreset='joinreset'>
+            <view class="infotitle">
+              申请加群
+            </view>
+
+            <input name="joingroupmsg" placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+            <view class="joingroupbtn">
+              <button class="joinbtn cancelbtn" form-type='reset'>{{joinbtn1}}</button>
+              <button class="joinbtn subbtn" form-type='submit'>{{joinbtn2}}</button>
+            </view>
+
+
+          </form>
+
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+
+  <view class="mylogin" style="min-height:{{winheight}};position:relative;z-index:3;" hidden="{{loginshow}}">
+    <view class="mycard">
+      <!-- 我的个人信息 -->
+      <view class="groupimgbox">
+        <image class="groupimgs" src="{{userInfo2.avatarUrl}}" background-size="cover"></image>
+      </view>
+      <view class="libox pdb2" style="text-align:center;">
+        <text class="p1">{{userInfo2.nickName}}</text>
+      </view>
+    </view>
+    <form class="">
+      <view class="flexrow contain">
+        <input class="allinput" placeholder='手机号' type="number" confirm-type='next' bindinput="input_phoneNum"></input>
+      </view>
+      <view class="flexrow contain">
+        <input class="codeinput" placeholder='验证码' type="number" confirm-type='done' bindinput="input_identifyCode"></input>
+        <button class="primary" hidden="{{sendshow}}" bindtap="SendPhoneNum" disabled="{{codetrue}}" style="">发送验证码</button>
+        <button class="default" hidden="{{resendshow}}" style="">重新获取({{time}}s)</button>
+      </view>
+      <view>
+        <button catchtap='sublogin' class="groupstatustext firstbtn submitbtn" disabled="{{logintrue}}">登录</button>
+      </view>
+
+    </form>
+
+  </view>
+  <view hidden="{{othergroup==true||allgroupshow==true?true:false}}">
+    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+    <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+  </view>
+
+</scroll-view>
+<movable-area style="height:10px;width:10px;position:fixed;bottom:80px;right:20px;" hidden="{{allgroupshow}}">
+  <!--蓝色任意方向拖动的内容-->
+  <movable-view out-of-bounds='false' direction="all" class="tabadd" bindtap="addgroup" style="width:44px;height:44px;bottom:0;top:auto;left:auto;right:0;">
+      <image class="iconimg" src="../image/qungliao.png"></image>
+  </movable-view>
+  
+  </movable-area>

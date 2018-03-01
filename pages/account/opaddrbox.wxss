@@ -1,0 +1,9 @@
+/* pages/account/opaddrbox.wxss */
+.libox{
+  height:50px;
+  position:relative;
+
+}
+.iconimg {
+vertical-align:-4px;
+}

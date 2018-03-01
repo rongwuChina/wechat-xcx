@@ -1,0 +1,28 @@
+<!--pages/index/login.wxml-->
+<view hidden="{{loginshow}}">
+
+    <view class="mycard">
+      <!-- 我的个人信息 -->
+      <view class="groupimgbox">
+        <image class="groupimgs" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      </view>
+      <view class="libox pdb2" style="text-align:center;">
+          <text class="p1">{{userInfo.nickName}}</text>
+      </view>
+    </view>
+    <form class="">
+      <view class="flexrow contain">
+        <input class="allinput" placeholder='手机号' type="number" confirm-type='next' bindinput="input_phoneNum"></input>
+      </view>
+      <view class="flexrow contain">
+        <input class="codeinput" placeholder='验证码' type="number" confirm-type='done' bindinput="input_identifyCode"></input>
+        <button class="primary" hidden="{{sendshow}}" bindtap="SendPhoneNum" disabled="{{codetrue}}"  style="">发送验证码</button>  
+        <button class="default" hidden="{{resendshow}}"  style="">重新获取({{time}}s)</button>  
+      </view>
+      <view>
+        <button class="groupstatustext firstbtn submitbtn" disabled="{{logintrue}}">登录</button>
+      </view>
+
+    </form>
+
+</view>

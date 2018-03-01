@@ -1,0 +1,154 @@
+<!--index.wxml-->
+<view class="">
+  <view class="groupbox" hidden="{{allgroupshow}}">
+    <!-- rongw: content -->
+    <view class="content">
+
+      <!-- rongw: 动态详情 -->
+      <view hidden="{{othergroup}}" bindtap="nospeakethis">
+
+        <block wx:for="{{dynamic.people.length}}" wx:for-index="key">
+          <view class="dynamicbox">
+            <!-- rongw: 动态详情 -->
+            <view class="dynamiccontent contain">
+
+              <!-- rongw: 个人信息展示 -->
+              <view class="contentli" id="{{dynamic.userid[item]}}" catchtap='thisopaddrbox'>
+                <view class="groupimgbox">
+                  <!-- <image class="groupimg" src="{{dynamic.people[item]}}" class="groupimg">
+                  </image> -->
+                  <view class="groupimg" style="background-image:url('{{dynamic.people[item]}}');background-repeat:repeat;background-size:cover;background-position:center;"></view>
+                </view>
+                <view class="groupinbox">
+                  <view class="groupinfo">
+                    <text class="ellipsis h1">{{dynamic.groupname[item]}}</text>
+                    <text class="h3 ellipsis">{{dynamic.groupinfo[item]}}</text>
+                    <text class="h4 ellipsis">{{dynamic.groupfrom[item]}}</text>
+                  </view>
+                  <view class="optime p4">
+                    {{dynamic.time[item]}}
+                  </view>
+                </view>
+
+
+              </view>
+              <!-- rongw: 动态内容 -->
+              <view class="dynamicintro">
+
+                <view class="dynamicp">
+                  {{dynamic.title[item]}}
+                </view>
+                <view class="{{dynamic.image[item].length > 3 ? 'dynamicimgbox' : ''}} flexrow">
+                  <block wx:for="{{dynamic.image[item].length}}" wx:for-item="items">
+                    <view catchtap='photosee' class="image {{dynamic.image[item].length == 1 ? 'oneimage' : ''}} {{dynamic.image[item].length == 2 ? 'twoimage' : ''}} {{dynamic.image[item].length == 3 ? 'threeimage' : ''}} {{dynamic.image[item].length == 4 ? 'fourimage' : ''}}"
+                      style="background:url('{{dynamic.image[item][items]}}');background-size:cover;background-position:center;background-repeat:no-repeat;height:{{imgwidth[item]}}px">
+
+                    </view>
+                  </block>
+
+                </view>
+                <view class="stateli">
+                  <image class="iconimg" src="../image/see.png"></image>
+                  <text class="p4">{{dynamic.see[item]}}浏览</text>
+                </view>
+              </view>
+
+            </view>
+
+            <view class="dynamiccomment contain" hidden="{{comment[key].name.length==0 ? true: false}}">
+
+              <!-- rongw: 评论展示 -->
+              <block wx:for="{{comment[key].name.length}}" wx:for-index="index">
+                <view class="contentli">
+                  <view class="groupimgbox" id="{{comment[key].userid[index]}}" catchtap='thisopaddrbox'>
+                    <!-- <image class="groupimg" src="{{comment[key].image[index]}}" class="groupimg">
+                    </image> -->
+                    <view class="groupimg" style="background-image:url('{{comment[key].image[index]}}');background-repeat:repeat;background-size:cover;background-position:center;"></view>
+                  </view>
+                  <view style="width: 90%;">
+                    <view class="groupinbox">
+                      <view class="groupinfo">
+                        <text class="ellipsis h1" id="{{comment[key].userid[index]}}" catchtap='thisopaddrbox'>{{comment[key].name[index]}}</text>
+                        <text class="h3 ellipsis">{{comment[key].time[index]}}</text>
+                      </view>
+                      <view catchtap="speakethis" id="{{comment[key].id[index]}}">
+                        <image mode="aspectFit" style="width:32px;height:32px;margin-bottom:20px;" src="../image/speake.png"></image>
+                      </view>
+
+                    </view>
+                    <view class="haha">
+                      <view class="p2 discussbox comment">
+                        {{comment[key].comment[index]}}
+                      </view>
+                      <view class="discussbox">
+                        <view class="commentbox" hidden="{{comment[key].discuss[index].name.length==0 ? true : false}}">
+                          <block wx:for="{{comment[key].discuss[index].name.length}}" wx:for-index="items">
+                            <view class="p2 discusscontent" hidden="{{items>1 ? true : false}}">
+                              <text class="p2 discussname" id="{{comment[key].discuss[index].discussuserId}}" catchtap='thisopaddrbox'>
+                          {{comment[key].discuss[index].name[items]}}
+                      </text>：{{comment[key].discuss[index].comment[items]}}
+                            </view>
+                          </block>
+                          <view style="margin-top:10px;" class="p2 discussname" hidden="{{comment[key].discuss[index].name.length>2 ? false : true}}" bindtap="morediscuss" id="{{index}}">
+                            共{{comment[key].discuss[index].name.length}}条回复 >
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+
+                </view>
+
+
+
+              </block>
+            </view>
+
+          </view>
+        </block>
+
+      </view>
+
+
+    </view>
+
+      <view class="commentary flexrow">
+
+        <input hidden="{{speakethis}}" class="commentinput" type="text" placeholder='写评论...' bindinput="commentinput" value="{{mycomment}}"></input>
+        <image hidden="{{speakethis}}" mode="aspectFit" style="width:36px;height:36px;" src="../image/speake.png" catchtap='comment'></image>
+        <text hidden="{{speakethis}}" style="margin-bottom:16px;font-size:13px;margin-right:10px;" class="p4">{{dynamicspeake}}</text>
+
+        <image hidden="{{speakethis}}" mode="aspectFit" style="width:36px;height:36px;" src="../image/greate.png" catchtap='great'></image>
+        <text hidden="{{speakethis}}" style="margin-bottom:16px;font-size:13px;margin-right:10px;" class="p4">{{dynamicgreate}}</text>
+
+        <image hidden="{{speakethis}}" mode="aspectFit" style="width:36px;height:36px;" src="../image/collect.png" catchtap='collect'></image>
+        <text hidden="{{speakethis}}" style="margin-bottom:16px;font-size:13px;margin-right:10px;" class="p4">{{dynamiccollect}}</text>
+
+        <input hidden="{{discussthis}}" class="commentinput" type="text" placeholder='{{discusstext}}' style="width:95%;margin-right:0;" bindinput="commentinput" value="{{mycomment}}"></input>
+        <image hidden="{{discussthis}}" mode="aspectFit" style="width:36px;height:36px;margin-left:10px;margin-right:0;" src="../image/speake.png" catchtap='discuss' id="{{parentCommentId}}"></image>
+
+      </view>
+
+  </view>
+
+</view>
+
+<view class="photoview" hidden="{{photoshow}}" style="height:{{windowHeight}}px;width:{{windowWidth}}px;background:black;">
+  <swiper bindchange="swiperChange" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{windowHeight}}px;width:{{windowWidth}}px;">
+    <block wx:for="{{dynamic.image[0].length}}" wx:for-item="items">
+      <swiper-item catchtap="photohide" style="height:{{windowHeight}}px;width:{{windowWidth}}px;">
+        <!-- <view catchtap='photosee' class="oneimage" style="background:url('');background-size:cover;background-position:center;background-repeat:no-repeat;height:{{windowHeight}}px;width:{{windowWidth}}px;">
+
+        </view> -->
+        <image  catchtap='photohide' mode='widthFix' style="width:{{windowWidth}}px;" src='{{dynamic.image[0][items]}}'></image>
+
+      </swiper-item>
+    </block>
+
+  </swiper>
+  <!-- <view class="flexrow dotcontent">
+    <block wx:for="{{dynamic.image[0].length}}" wx:for-item="items">
+      <text class="dot {{dotnow[items]}}" bindtap="currentChange"></text>
+    </block>
+  </view> -->
+</view>

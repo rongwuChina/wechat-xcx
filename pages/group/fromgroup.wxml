@@ -1,0 +1,83 @@
+<!--index.wxml-->
+<view class="addnewgroup">
+  <view class="search__top">
+    <form class="search__form" bindsubmit="searchSubmit">
+      <input value="{{search.searchValue}}" placeholder="团队名字/团队ID" class="search__input" bindfocus="focusSearch" bindinput="searchActiveChangeinput" auto-focus="true" name="teamSearchKeyWords" />
+      <view class="search__icon search__active" style="width:40rpx;">
+        <icon type="search" size="16" color="#888"></icon>
+      </view>
+      <button wx:if="{{search.showClearBtn}}" catchtap="searchActiveChangeclear" form-type="reset" style="background:none;position:absolute;border:none;right:0;top:0;bottom:0;width:80rpx;">
+        <icon type="clear" size="19" color="#aaa" style="position:absolute;right:15rpx;top:10rpx;z-index:3;"></icon>
+      </button>
+    </form>
+  </view>
+  <view class="panel" wx:if="{{search.showClearBtn}}" catchtap="searchSubmit">
+    <view class="panel__bd">
+      <view class="media-box media-box_small-appmsg">
+        <view class="cells">
+          <view class="a cell cell_access">
+            <view class="cell__hd" style="background-color:#1AAD19;border-radius:7rpx;width:80rpx;height:80rpx;line-height:80rpx;text-align:center;">
+              <icon type="search" size="24" color="#fff" style="margin-top:20rpx;"></icon>
+            </view>
+            <view class="cell__bd cell_primary">
+              <view class="p" style="padding-left:20rpx;font-size:34rpx;">
+                <text style="color:#000;">搜索:</text>
+                <text style="color:#1AAD19;margin-left:20rpx;">{{search.searchValue}}</text>
+              </view>
+            </view>
+            <text class="cell__ft"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <block wx:for="{{searchResult}}" wx:for-item="item" wx:key="id">
+    <navigator url="info?teamId={{item.team_id}}">
+      <view class="person__top__wrapper">
+        <view class="person__top__avatar">
+          <image src="{{item.team_avator}}" />
+        </view>
+        <view class="person__top__userinfo">
+          <view class="h3 justify">{{item.team_name}}</view>
+          <view class="h4 justify">{{item.team_intr}}</view>
+        </view>
+      </view>
+    </navigator>
+  </block>
+
+  <view class="groupbox" hidden="{{allgroupshow}}">
+
+    <block wx:for="{{group.url.length}}" wx:for-index='key'>
+      <!-- rongw: content -->
+      <view class="" hidden="{{othergroup}}" id="{{group.infotype[item]}}">
+        <label class="checkbox contentli">  
+          <view class="groupimgbox flexcolum">
+            <image class="groupimg" src="{{group.url[item]}}" class="groupimg">
+            </image>
+            <checkbox style="position:absolute;bottom:17px;" value="{{group.groupname[item]}}" checked="{{group.checked[item]}}" disabled="{{group.disabled[item]}}"/> 
+          </view>
+          <view class="groupinbox">
+            <view class="groupinfo  {{group.grouptype[item]==true ? 'grouptit' : ' '}}">
+              <text class="ellipsis h1">{{group.groupname[item]}}</text>
+              <text class="h2 ellipsis">{{group.groupinfo[item]}}</text>
+              <text class="h3 ellipsis">{{group.groupintro[item]}}</text>
+              <view class="ppiconbox">
+                <block wx:for="{{group.groupicon[key].length}}" wx:for-index='index'>
+                  <text class="peopleicon h4">
+              {{group.groupicon[key][index]}}
+              </text>
+                </block>
+              </view>
+            </view>
+
+          </view>
+        </label>  
+      </view>
+
+    </block>
+  </view>
+
+
+</view>
+
+  <text class="groupstatustext submitbtn firstbtn">确定</text>

@@ -1,0 +1,398 @@
+<!--index.wxml-->
+<scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px;" scroll-y="true" bindscrolltolower="searchScrollLower">
+<view class="container3">
+  <!-- rongw： 头部tab -->
+  <view class="toptabbox">
+    <text class="textleft h3" decode>{{groupname}}</text>
+    <view class="li right" bindtap="groupset">
+      <image class="iconimg" src="../image/qunset.png"></image>
+    </view>
+  </view>
+
+  <view class="toptabbox2 bggray">
+    <view class="tabbox {{toptabnow}}" bindtap="toptapfunc">
+      <text class="tab1" id="tab1">群头条</text>
+    </view>
+    <view class="tabbox {{toptabnow2}}" bindtap="toptapfunc2">
+      <text class="tab2" id="tab1">群通讯录</text>
+    </view>
+  </view>
+
+  <view class="groupbox">
+
+    <!-- rongw: content -->
+    <view class="content">
+
+      <!-- rongw: 群头条 -->
+
+        <view hidden="{{othergroup}}">
+
+          <block wx:for="{{dynamic.people.length}}" wx:fon-indx="key">
+            <view class="dynamicbox contain" bindtap="dynamicdetail" id="{{dynamic.id[item]}}">
+              <!-- rongw: 个人信息展示 -->
+              <view class="contentli" id="{{dynamic.userid[item]}}" catchtap='thisopaddrbox'>
+                <view class="groupimgbox">
+                  <!-- <image class="groupimg" src="{{dynamic.people[item]}}" class="groupimg">
+                  </image> -->
+                  <view class="groupimg" style="background:url('{{dynamic.people[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+                  </view>
+
+                </view>
+                <view class="groupinbox">
+                  <view class="groupinfo">
+                    <text class="ellipsis h1">{{dynamic.groupname[item]}}</text>
+                    <text class="h3 ellipsis">{{dynamic.groupinfo[item]}}</text>
+                  </view>
+                  <view class="optime p4">
+                    {{dynamic.time[item]}}
+                  </view>
+                </view>
+
+
+              </view>
+
+              <!-- rongw: 动态详情 -->
+              <view class="dynamicintro">
+
+                <view class="dynamicp">
+                  {{dynamic.title[item]}}
+                </view>
+                <view class="{{dynamic.image[item].length > 3 ? 'dynamicimgbox' : ''}} flexrow">
+                  <block wx:for="{{dynamic.image[item].length}}" wx:for-item="items">
+                    <view class="image {{dynamic.image[item].length == 1 ? 'oneimage' : ''}} {{dynamic.image[item].length == 2 ? 'twoimage' : ''}} {{dynamic.image[item].length == 3 ? 'threeimage' : ''}} {{dynamic.image[item].length == 4 ? 'fourimage' : ''}}" style="background:url('{{dynamic.image[item][items]}}');background-size:cover;background-position:center;background-repeat:no-repeat;height:{{imgwidth[item]}}px">
+
+                    </view>
+                  </block>
+
+                </view>
+              </view>
+
+              <view class="statebox flexrow">
+                <view class="stateli">
+                  <image class="iconimg" src="../image/see.png"></image>
+                  <text class="p4">{{dynamic.see[item]}}</text>
+                </view>
+                <view class="stateli">
+                  <image class="iconimg" src="../image/speake.png"></image>
+                  <text class="p4">{{dynamic.speake[item]}}</text>
+                </view>
+                <view class="stateli">
+                  <image class="iconimg" src="../image/greate.png"></image>
+                  <text class="p4">{{dynamic.greate[item]}}</text>
+                </view>
+                <view class="stateli">
+                  <image class="iconimg" src="../image/share.png"></image>
+                  <text class="p4">{{dynamic.share[item]}}</text>
+                </view>
+              </view>
+
+            </view>
+          </block>
+
+          <!-- <view class="tabadd" bindtap="writedynamic">
+            <image class="iconimg" src="../image/write.png"></image>
+          </view> -->
+        </view>
+
+        <!-- rongw: 群通讯录 -->
+        <view class="addnewgroup" style="padding-bottom:60px;" hidden="{{mygroupshow}}">
+
+          <!-- rongw: 搜索通讯录 -->
+          <view class="search__top">
+            <form class="search__form" bindsubmit="searchSubmit">
+              <view class="search__icon search__active" style="width:40rpx;">
+                <icon type="search" size="16" color="#888"></icon>
+              </view>
+              <input value="{{search.searchValue}}" placeholder="团队名字/团队ID" class="search__input" bindfocus="focusSearch" bindinput="searchActiveChangeinput" name="teamSearchKeyWords" />
+
+              <button wx:if="{{search.showClearBtn}}" catchtap="searchActiveChangeclear" form-type="reset" style="background:none;position:absolute;border:none;right:20px;top:4px;bottom:0;width:80rpx;">
+                <icon type="clear" size="19" color="#aaa" style="position:absolute;right:15rpx;top:10rpx;z-index:3;"></icon>
+              </button>
+            </form>
+          </view>
+          <view class="panel" wx:if="{{search.showClearBtn}}" catchtap="searchSubmit">
+            <view class="panel__bd">
+              <view class="media-box media-box_small-appmsg">
+                <view class="cells">
+                  <view class="a cell cell_access">
+                    <view class="cell__hd" style="background-color:#1AAD19;border-radius:7rpx;width:80rpx;height:80rpx;line-height:80rpx;text-align:center;">
+                      <icon type="search" size="24" color="#fff" style="margin-top:20rpx;"></icon>
+                    </view>
+                    <view class="cell__bd cell_primary">
+                      <view class="p" style="padding-left:20rpx;font-size:34rpx;">
+                        <text style="color:#000;">搜索:</text>
+                        <text style="color:#1AAD19;margin-left:20rpx;">{{search.searchValue}}</text>
+
+                      </view>
+
+                    </view>
+                    <text class="cell__ft"></text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <text style="color:#1AAD19;float:right;margin-right:20px;margin-top:-45px;vertical-align:40px;display:block;" hidden="{{seacher}}" catchtap='defaultseach'>取消</text>
+
+          <view class="searchresult" hidden="{{seacher}}">
+
+            <checkbox-group bindchange="choosethis">
+              <block wx:for="{{group4.url.length}}" wx:for-index='key'>
+                <label class="checkbox contentli">
+                  <view class="contentli contentlis" id="{{group4.userid[item]}}">
+                    <view class="groupimgbox">
+                      <!-- <image class="groupimg" src="{{group4.url[item]}}" class="groupimg">
+                      </image> -->
+                      <view class="groupimg" style="background:url('{{group4.url[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+                      </view>
+                      <checkbox style="position:absolute;bottom:17px;" value="{{group4.userid[item]}}" checked="{{group.checked[item]}}" disabled="{{group4.disabled[item]}}" hidden='{{deletethis}}' bindchange='choosethis' />
+                    </view>
+                    <view class="groupinbox">
+                      <view class="grouptit groupinfo">
+                        <text class="ellipsis h1">{{group4.groupname[item]}}</text>
+                        <text class="h2 ellipsis">{{group4.groupinfo[item]}}</text>
+                        <text class="h3 ellipsis">{{group4.groupintro[item]}}</text>
+                        <view class="ppiconbox">
+                          <block wx:for="{{group4.groupicon[key].length}}" wx:for-index='index2'>
+                            <text class="peopleicon h4">
+                        {{group4.groupicon[key][index2]}}
+                        </text>
+                          </block>
+                        </view>
+                      </view>
+
+                    </view>
+
+                  </view>
+                </label>
+
+              </block>
+
+            </checkbox-group>
+          </view>
+
+          <view class="groupbox" hidden="{{overseacher}}">
+
+
+            <!-- rongw: 群主 -->
+            <view hidden="{{group0.url.length==0 ? true : false}}" class="worditem">群主</view>
+            <block wx:for="{{group0.url.length}}" wx:for-index='key'>
+              <!-- rongw: content -->
+              <label class="checkbox contentli">
+                <view class="contentli contentlis" bindtap="opaddrbox" id="{{group0.userid[item]}}">
+                  <view class="groupimgbox">
+                    <!-- <image class="groupimg" src="{{group0.url[item]}}" class="groupimg">
+                    </image> -->
+                    <view class="groupimg" style="background:url('{{group0.url[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+                    </view>
+                    <checkbox style="position:absolute;bottom:17px;" value="{{group.groupname[item]}}" checked="{{group.checked[item]}}" disabled="{{group.disabled[item]}}" hidden='{{deletethis}}' />
+                  </view>
+                  <view class="groupinbox">
+                    <view class="grouptit groupinfo">
+                      <text class="ellipsis h1">{{group0.groupname[item]}}</text>
+                      <text class="h2 ellipsis">{{group0.groupinfo[item]}}</text>
+                      <text class="h3 ellipsis">{{group0.groupintro[item]}}</text>
+                      <view class="ppiconbox">
+                        <block wx:for="{{group0.groupicon[key].length}}" wx:for-index='index2'>
+                          <text class="peopleicon h4">
+                        {{group0.groupicon[key][index2]}}
+                        </text>
+                        </block>
+                      </view>
+                    </view>
+
+                  </view>
+
+                </view>
+              </label>
+            </block>
+            <!-- rongw: 群管理员 -->
+
+            <view hidden="{{group1.url.length==0 ? true : false}}" class="worditem">群管理员</view>
+            <block wx:for="{{group1.url.length}}" wx:for-index='key'>
+              <!-- rongw: content -->
+              <label class="checkbox contentli">
+                <view class="contentli contentlis" bindtap="opaddrbox2" id="{{group1.userid[item]}}">
+                  <view class="groupimgbox">
+                    <!-- <image class="groupimg" src="{{group1.url[item]}}" class="groupimg">
+                    </image> -->
+                    <view class="groupimg" style="background:url('{{group1.url[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+                    </view>
+                    <checkbox style="position:absolute;bottom:17px;" value="{{group.groupname[item]}}" checked="{{group.checked[item]}}" disabled="{{group.disabled[item]}}" hidden='{{deletethis}}' />
+                  </view>
+                  <view class="groupinbox">
+                    <view class="grouptit groupinfo">
+                      <text class="ellipsis h1">{{group1.groupname[item]}}</text>
+                      <text class="h2 ellipsis">{{group1.groupinfo[item]}}</text>
+                      <text class="h3 ellipsis">{{group1.groupintro[item]}}</text>
+                      <view class="ppiconbox">
+                        <block wx:for="{{group1.groupicon[key].length}}" wx:for-index='index2'>
+                          <text class="peopleicon h4">
+                        {{group1.groupicon[key][index2]}}
+                        </text>
+                        </block>
+                      </view>
+                    </view>
+
+                  </view>
+
+                </view>
+              </label>
+            </block>
+            <!-- rongw: 群写手 -->
+            <view hidden="{{group2.url.length==0 ? true : false}}" class="worditem">群主编</view>
+            <block wx:for="{{group2.url.length}}" wx:for-index='key'>
+              <!-- rongw: content -->
+              <label class="checkbox contentli">
+                <view class="contentli contentlis" bindtap="opaddrbox3" id="{{group2.userid[item]}}">
+                  <view class="groupimgbox">
+                    <!-- <image class="groupimg" src="{{group2.url[item]}}" class="groupimg">
+                    </image> -->
+                    <view class="groupimg" style="background:url('{{group2.url[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+                    </view>
+                    <checkbox style="position:absolute;bottom:17px;" value="{{group.groupname[item]}}" checked="{{group.checked[item]}}" disabled="{{group.disabled[item]}}" hidden='{{deletethis}}' />
+                  </view>
+                  <view class="groupinbox">
+                    <view class="grouptit groupinfo">
+                      <text class="ellipsis h1">{{group2.groupname[item]}}</text>
+                      <text class="h2 ellipsis">{{group2.groupinfo[item]}}</text>
+                      <text class="h3 ellipsis">{{group2.groupintro[item]}}</text>
+                      <view class="ppiconbox">
+                        <block wx:for="{{group2.groupicon[key].length}}" wx:for-index='index2'>
+                          <text class="peopleicon h4">
+                        {{group2.groupicon[key][index2]}}
+                        </text>
+                        </block>
+                      </view>
+                    </view>
+
+                  </view>
+
+                </view>
+              </label>
+            </block>
+            <!-- rongw: 按字母表顺序排序的人群 -->
+            <block wx:for="{{wordindex.length}}" wx:for-index='index'>
+              <view hidden="{{group[index]==null ? true : false}}" class="worditem">{{wordindex[index]}}</view>
+              <block wx:for="{{group[index].url.length}}" wx:for-index='key'>
+                <!-- rongw: content -->
+                <label class="checkbox contentli">
+                  <view class="contentli contentlis" bindtap="opaddrbox" id="{{group[index].userid[item]}}">
+                    <view class="groupimgbox">
+                      <!-- <image class="groupimg" src="{{group[index].url[item]}}" class="groupimg">
+                      </image> -->
+                      <view class="groupimg" style="background:url('{{group[index].url[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+                      </view>
+                      <checkbox style="position:absolute;bottom:17px;" value="{{group.groupname[item]}}" checked="{{group.checked[item]}}" disabled="{{group.disabled[item]}}" hidden='{{deletethis}}' />
+                    </view>
+                    <view class="groupinbox">
+                      <view class="grouptit groupinfo">
+                        <text class="ellipsis h1">{{group[index].groupname[item]}}</text>
+                        <text class="h2 ellipsis">{{group[index].groupinfo[item]}}</text>
+                        <text class="h3 ellipsis">{{group[index].groupintro[item]}}</text>
+                        <view class="ppiconbox">
+                          <block wx:for="{{group[index].groupicon[key].length}}" wx:for-index='index2'>
+                            <text class="peopleicon h4">
+                        {{group[index].groupicon[key][index2]}}
+                        </text>
+                          </block>
+                        </view>
+                      </view>
+
+                    </view>
+
+                  </view>
+                </label>
+              </block>
+
+            </block>
+            <!-- rongw: 名字混乱的众人 -->
+            <view hidden="{{group3.url.length==0 ? true : false}}" class="worditem">其他</view>
+            <block wx:for="{{group3.url.length}}" wx:for-index='key'>
+              <label class="checkbox contentli">
+                <view class="contentli contentlis" bindtap="opaddrbox" id="{{group3.userid[item]}}">
+                  <view class="groupimgbox">
+                    <!-- <image class="groupimg" src="{{group3.url[item]}}" class="groupimg">
+                    </image> -->
+                    <view class="groupimg" style="background:url('{{group3.url[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+                    </view>
+                    <checkbox style="position:absolute;bottom:17px;" value="{{group.groupname[item]}}" checked="{{group.checked[item]}}" disabled="{{group.disabled[item]}}" hidden='{{deletethis}}' />
+                  </view>
+                  <view class="groupinbox">
+                    <view class="grouptit groupinfo">
+                      <text class="ellipsis h1">{{group3.groupname[item]}}</text>
+                      <text class="h2 ellipsis">{{group3.groupinfo[item]}}</text>
+                      <text class="h3 ellipsis">{{group3.groupintro[item]}}</text>
+                      <view class="ppiconbox">
+                        <block wx:for="{{group3.groupicon[key].length}}" wx:for-index='index2'>
+                          <text class="peopleicon h4">
+                        {{group3.groupicon[key][index2]}}
+                        </text>
+                        </block>
+                      </view>
+                    </view>
+
+                  </view>
+
+                </view>
+              </label>
+            </block>
+
+
+          </view>
+
+          <view class="peoplebottom flexrow">
+            <view class="addpeople" catchtap='addpeople'>
+              <image mode="widthFix" class="iconimg3" src="../image/add2.png"></image>
+            </view>
+            <view class="deletpeople" catchtap='deletpeople'>
+              <image mode="widthFix" class="iconimg3" src="../image/reducep.png"></image>
+            </view>
+          </view>
+        </view>
+
+
+    </view>
+
+  </view>
+
+</view>
+
+  <view  hidden="{{othergroup}}">
+    <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+    <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+  </view>
+
+</scroll-view>
+<movable-area style="height:10px;width:10px;position:fixed;bottom:50px;right:20px;z-index:2;" hidden="{{othergroup}}">
+  <!--蓝色任意方向拖动的内容-->
+  <movable-view out-of-bounds='false' direction="all" class="tabadd" bindtap="writedynamic" style="width:44px;height:44px;bottom:0;top:auto;left:auto;right:0;" hidden='{{writeshow}}'>
+    <image class="iconimg" src="../image/write.png"></image>
+  </movable-view>
+  <movable-view out-of-bounds='false' direction="all" class="tabwrite" bindtap="writesub" style="width:44px;height:44px;bottom:0;top:auto;left:auto;right:0;" hidden='{{!writeshow}}'>
+    <image class="iconimg" src="../image/write.png"></image>
+  </movable-view>
+
+</movable-area>
+<!-- rongw: join a group -->
+<view class="dwt" hidden="{{joinshow}}"></view>
+<view class="joingroup" hidden="{{joinshow}}">
+
+  <view class="infobox">
+
+    <form bindsubmit='joinsubmit' bindreset='joinreset'>
+      <view class="infotitle">
+        申请成为群主编
+      </view>
+
+      <input name="joingroupmsg" placeholder-class='placeholder' placeholder='申请理由' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn cancelbtn" form-type='reset'>取消</button>
+        <button class="joinbtn subbtn" form-type='submit'>申请</button>
+      </view>
+
+
+    </form>
+
+  </view>
+</view>

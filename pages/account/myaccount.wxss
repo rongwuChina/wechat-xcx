@@ -1,0 +1,77 @@
+.backicon,.savegroupse{
+  position: relative;
+  z-index: 20;
+  width:30px;
+  height:30px;
+
+}
+.addnewgroup{
+  /* background: white; */
+  margin-top:10px;
+}
+.inputrow{
+  display: flex;
+  justify-content: space-between;
+  padding:15px 10px;
+  width: 100%;
+  box-sizing:border-box;
+  align-items: center;
+  background: white;
+  margin-bottom: 10px;
+}
+.inpucolum{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding:15px 10px;
+  width: 100%;
+  box-sizing:border-box;
+  background: #f4f4f4;
+  border-top:solid 2px white;
+  border-bottom:solid 2px white;
+}
+input{padding-left: 0;height:30px;font-size:13px;}
+.textright{text-align: right;}
+.addbtn{
+  font-size: 13px;
+  line-height: 35px;
+  height: 35px;
+  position: fixed;
+  bottom: 8px;
+  background-color: #ff6607;
+  left:8px;
+  right:8px;
+}
+
+.addnewgroup::after{
+  display: block;
+  width:100%;
+  height:50px;
+  content: "";
+
+}
+
+.vidia{
+  width:28px;
+  height:28px;
+  color:white;
+  background: #8a8a8a;
+  line-height:26px;
+  border-radius: 50%;
+  font-size:16px;
+  text-align:center;
+  float:left;
+}
+
+.inputrow2{
+
+  width: 100%;
+  box-sizing:border-box;
+  background: white;
+}
+.inputrow2 text{
+  padding:15px 10px;
+}
+.inputrow2 .tagitem{
+  padding:5px 10px;
+}

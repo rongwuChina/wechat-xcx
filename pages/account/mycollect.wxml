@@ -1,0 +1,81 @@
+<!--index.wxml-->
+<view class="">
+
+  <view class="groupbox">
+
+    <!-- rongw: content -->
+    <view class="content">
+
+      <!-- rongw: 我的通讯录圈 -->
+      <scroll-view hidden="{{othergroup}}" style="height: {{windowHeight}}px; width: {{windowWidth}}px;" scroll-y="true" bindscrolltolower="searchScrollLower">
+        <view hidden="{{othergroup}}">
+
+          <block wx:for="{{dynamic.people.length}}" wx:fon-indx="key">
+            <view class="dynamicbox contain" bindtap="dynamicdetail" id="{{dynamic.id[item]}}">
+
+              <!-- rongw: 个人信息展示 -->
+              <view class="contentli" id="{{dynamic.userid[item]}}" catchtap='thisopaddrbox'>
+                <view class="groupimgbox">
+                  <image class="groupimg" src="{{dynamic.people[item]}}" class="groupimg">
+                  </image>
+                </view>
+                <view class="groupinbox">
+                  <view class="groupinfo">
+                    <text class="ellipsis h1">{{dynamic.groupname[item]}}</text>
+                    <text class="h3 ellipsis">{{dynamic.groupinfo[item]}}</text>
+                  </view>
+                  <view class="optime p4">
+                    {{dynamic.time[item]}}
+                  </view>
+                </view>
+
+
+              </view>
+
+              <!-- rongw: 动态详情 -->
+              <view class="dynamicintro">
+
+                <view class="dynamicp">
+                  {{dynamic.title[item]}}
+                </view>
+                <view class="{{dynamic.image[item].length > 3 ? 'dynamicimgbox' : ''}} flexrow">
+                  <block wx:for="{{dynamic.image[item].length}}" wx:for-item="items">
+                    <view class="image {{dynamic.image[item].length == 1 ? 'oneimage' : ''}} {{dynamic.image[item].length == 2 ? 'twoimage' : ''}} {{dynamic.image[item].length == 3 ? 'threeimage' : ''}} {{dynamic.image[item].length == 4 ? 'fourimage' : ''}}" style="background:url('{{dynamic.image[item][items]}}'); height:{{imgwidth[item]}}px;background-size:cover;background-repeat:no-repeat;background-position:center;">
+
+                    </view>
+                  </block>
+
+                </view>
+              </view>
+
+              <view class="statebox flexrow">
+                <view class="stateli">
+                  <image class="iconimg" src="../image/see.png"></image>
+                  <text class="p4">{{dynamic.see[item]}}</text>
+                </view>
+                <view class="stateli">
+                  <image class="iconimg" src="../image/speake.png"></image>
+                  <text class="p4">{{dynamic.speake[item]}}</text>
+                </view>
+                <view class="stateli">
+                  <image class="iconimg" src="../image/greate.png"></image>
+                  <text class="p4">{{dynamic.greate[item]}}</text>
+                </view>
+                <view class="stateli">
+                  <image class="iconimg" src="../image/share.png"></image>
+                  <text class="p4">{{dynamic.share[item]}}</text>
+                </view>
+              </view>
+
+            </view>
+          </block>
+
+        </view>
+        <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+        <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+      </scroll-view>
+    </view>
+
+  </view>
+
+</view>

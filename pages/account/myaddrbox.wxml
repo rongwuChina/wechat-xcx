@@ -1,0 +1,142 @@
+<!--index.wxml-->
+
+<view class="addnewgroup">
+  <!-- rongw: 搜索通讯录 -->
+  <view class="search__top">
+    <form class="search__form" bindsubmit="searchSubmit">
+      <view class="search__icon search__active" style="width:40rpx;">
+        <icon type="search" size="16" color="#888"></icon>
+      </view>
+      <input value="{{search.searchValue}}" placeholder="团队名字/团队ID" class="search__input" bindfocus="focusSearch" bindinput="searchActiveChangeinput" name="teamSearchKeyWords" />
+
+      <button wx:if="{{search.showClearBtn}}" catchtap="searchActiveChangeclear" form-type="reset" style="background:none;position:absolute;border:none;right:20px;top:4px;bottom:0;width:80rpx;">
+        <icon type="clear" size="19" color="#aaa" style="position:absolute;right:15rpx;top:10rpx;z-index:3;"></icon>
+      </button>
+    </form>
+  </view>
+  <view class="panel" wx:if="{{search.showClearBtn}}" catchtap="searchSubmit">
+    <view class="panel__bd">
+      <view class="media-box media-box_small-appmsg">
+        <view class="cells">
+          <view class="a cell cell_access">
+            <view class="cell__hd" style="background-color:#1AAD19;border-radius:7rpx;width:80rpx;height:80rpx;line-height:80rpx;text-align:center;">
+              <icon type="search" size="24" color="#fff" style="margin-top:20rpx;"></icon>
+            </view>
+            <view class="cell__bd cell_primary">
+              <view class="p" style="padding-left:20rpx;font-size:34rpx;">
+                <text style="color:#000;">搜索:</text>
+                <text style="color:#1AAD19;margin-left:20rpx;">{{search.searchValue}}</text>
+
+              </view>
+
+            </view>
+            <text class="cell__ft"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <text style="color:#1AAD19;float:right;margin-right:20px;margin-top:-45px;vertical-align:40px;display:block;" hidden="{{seacher}}" catchtap='defaultseach'>取消</text>
+
+  <view class="searchresult" hidden="{{seacher}}">
+
+    
+      <block wx:for="{{group4.url.length}}" wx:for-index='key'>
+
+          <view class="contentli contentlis" bindtap="opaddrbox" id="{{group4.userid[item]}}">
+            <view class="groupimgbox">
+              <!-- <image class="groupimg" src="{{group4.url[item]}}" class="groupimg">
+                      </image> -->
+              <view class="groupimg" style="background:url('{{group4.url[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+              </view>
+            </view>
+            <view class="groupinbox">
+              <view class="grouptit groupinfo">
+                <text class="ellipsis h1">{{group4.groupname[item]}}</text>
+                <text class="h2 ellipsis">{{group4.groupinfo[item]}}</text>
+                <text class="h3 ellipsis">{{group4.groupintro[item]}}</text>
+                <view class="ppiconbox">
+                  <block wx:for="{{group4.groupicon[key].length}}" wx:for-index='index2'>
+                    <text class="peopleicon h4">
+                        {{group4.groupicon[key][index2]}}
+                        </text>
+                  </block>
+                </view>
+              </view>
+
+            </view>
+
+          </view>
+
+
+      </block>
+
+    
+  </view>
+
+
+  <view class="groupbox" hidden="{{overseacher}}">
+
+    <!-- rongw: 按字母表顺序排序的人群 -->
+    <block wx:for="{{wordindex.length}}" wx:for-index='index'>
+      <view hidden="{{group[index]==null ? true : false}}" class="worditem">{{wordindex[index]}}</view>
+      <block wx:for="{{group[index].url.length}}" wx:for-index='key'>
+        <!-- rongw: content -->
+        <view class="contentli contentlis" bindtap="opaddrbox" id="{{group[index].userid[item]}}">
+          <view class="groupimgbox">
+            <!-- <image class="groupimg" src="{{group[index].url[item]}}" class="groupimg">
+                  </image> -->
+            <view class="groupimg" style="background:url('{{group[index].url[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+            </view>
+          </view>
+          <view class="groupinbox">
+            <view class="grouptit groupinfo">
+              <text class="ellipsis h1">{{group[index].groupname[item]}}</text>
+              <text class="h2 ellipsis">{{group[index].groupinfo[item]}}</text>
+              <text class="h3 ellipsis">{{group[index].groupintro[item]}}</text>
+              <view class="ppiconbox">
+                <block wx:for="{{group[index].groupicon[key].length}}" wx:for-index='index2'>
+                  <text class="peopleicon h4">
+                        {{group[index].groupicon[key][index2]}}
+                        </text>
+                </block>
+              </view>
+            </view>
+
+          </view>
+
+        </view>
+      </block>
+    </block>
+    <!-- rongw: 名字混乱的众人 -->
+    <view hidden="{{group3.url.length==0 ? true : false}}" class="worditem">其他</view>
+    <block wx:for="{{group3.url.length}}" wx:for-index='key'>
+      <view class="contentli contentlis" bindtap="opaddrbox" id="{{group3.userid[item]}}">
+        <view class="groupimgbox">
+          <!-- <image class="groupimg" src="{{group3.url[item]}}" class="groupimg">
+                </image> -->
+          <view class="groupimg" style="background:url('{{group3[index].url[item]}});background-size:cover;background-repeat:no-repeat;background-position:center;">
+          </view>
+        </view>
+        <view class="groupinbox">
+          <view class="grouptit groupinfo">
+            <text class="ellipsis h1">{{group3.groupname[item]}}</text>
+            <text class="h2 ellipsis">{{group3.groupinfo[item]}}</text>
+            <text class="h3 ellipsis">{{group3.groupintro[item]}}</text>
+            <view class="ppiconbox">
+              <block wx:for="{{group3.groupicon[key].length}}" wx:for-index='index2'>
+                <text class="peopleicon h4">
+                        {{group3.groupicon[key][index2]}}
+                        </text>
+              </block>
+            </view>
+          </view>
+
+        </view>
+
+      </view>
+    </block>
+  </view>
+
+
+</view>

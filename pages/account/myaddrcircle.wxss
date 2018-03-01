@@ -1,0 +1,7 @@
+/* pages/account/myaddrcircle.wxss */
+.dynamicbox{
+  margin-top:10px;
+}
+.groupimg{
+  top:13px;
+}

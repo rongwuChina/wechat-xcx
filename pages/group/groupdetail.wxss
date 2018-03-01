@@ -1,0 +1,292 @@
+/**index.wxss**/
+
+.groupstatustext .redicon{
+  text-align: center;
+}
+
+/* rongw:   group */
+.groupbox{width:100%}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentlis{
+  background: white;
+  padding:10px 20px;
+  margin-bottom:3px;
+}
+/* .contentlisbox{
+
+} */
+.userinfo-avatar {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 20rpx;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+/* rongw: grouptag  */
+
+.tagbox{
+
+  height:auto;
+  width:calc(100%-20);
+  padding-left:10px;
+  padding-right:10px;
+  padding-top: 10px;
+  position:fixed;
+  top:45px;
+  z-index:22;
+  background:white;
+  border-bottom:solid 1px rgb(222,222,222);
+ text-align: center;
+}
+.tagintro{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: spacearound;
+}
+
+.toptabnow text{
+  color:#f85959;
+  font-size:17px;
+}
+.tab1,.tab2{
+  position:relative;
+  bottom:5px;
+  margin-right:8px;
+}
+.tabbox image{
+   width:24px;
+   height:24px;
+}
+/* rongw: content  */
+.content{
+  width:100%;
+  margin-top:15px;
+}
+
+.groupstatus{
+  
+    width:63px;
+    /* text-align:right; */
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+    justify-content:flex-end;
+    position:relative;
+}
+ .groupstatustext{
+   text-align:center;
+} 
+.thismygroup {
+    width:20px;
+    background:yellow;
+    height:4px;
+    position:absolute;
+    right:0;
+    top:30px;
+}
+
+
+
+/* rongw: bottom  */
+.bottombox{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  right:0;
+  text-align: center;
+  align-content: stretch;
+  align-items: stretch;
+  background:white;
+}
+
+.bottomtap{
+  width:100%;
+  height: 60px;
+  color:#a9a9a9;
+  font-size:16px;
+}
+.bottomtap image{
+width:30px;
+height:30px;
+top:6px;
+position:relative;
+left:6px;
+
+}
+.bottomtap text{
+display:block;
+margin-top:2px;
+
+}
+
+.bottomnow{
+  color:#f85959;
+}
+
+/* .joinmsg{
+  width:100%;
+  height:46px;
+  border:solid 1px #333;
+}
+.joingroupbtn{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
+.joinbtn{
+  line-height: 35px;
+  height:35px;
+  padding:0 10px;
+  font-size: 13px;
+  width: 40%;
+  margin-top:10px; 
+} */
+
+/* rongw:  myown 我的 */
+.userimage{
+  border-radius: 50%;
+}
+.myonwn{
+  width:100%;
+}
+.toptitle{
+   margin:0 auto;
+}
+.mylist{
+padding:10px 15px;
+background:white;
+border-bottom:solid 1px rgb(222,222,222);
+}
+.xiaoda{
+  margin-top:10px;
+  margin-bottom: 60px;
+  height:52px; 
+  line-height:30px;
+}
+.tabadd{
+/* position:fixed;
+bottom:80px;
+right:20px; */
+width:44px;
+height:44px;
+text-align:center;
+background:#f85959;
+border-radius:50%;
+z-index:24;
+}
+.tabwrite{
+  width:44px;
+height:44px;
+text-align:center;
+background:#dcdcdc;
+border-radius:50%;
+z-index:24;
+}
+.tabwrite image {
+  width:25px;
+  height:21.8px;
+  margin:0 auto;
+  margin-top:11px;
+}
+.tabadd image {
+  width:25px;
+  height:21.8px;
+  margin:0 auto;
+  margin-top:11px;
+}
+
+.tabbox{
+  width:50%;
+  text-align: center;
+  height:60px;
+
+}
+.toptabbox2 .tabbox{
+  line-height:65px;
+}
+.myonwn .toptabbox{
+  background:#333;
+  color: white;
+  font-size:24px;
+}
+.cardbox{
+padding:10px 15px;
+padding-bottom:0;
+background: #333;
+color:white;
+margin-top:45px;
+}
+.cardbox text{
+  color:white;
+}
+.mycard{
+  width:100%;
+}
+.mycard text{
+  text-align:center;
+margin-bottom:30px;
+
+}
+.libox{
+  text-align: center;
+  margin-bottom:30px;
+}
+.li{
+  margin-bottom:6px;
+}
+.button{
+  padding:2px;
+}
+.myintro{
+  padding:6px 15px;
+  padding-bottom:15px;
+background: #f5f6f6;
+}
+.mytiding{
+  font-size:13px;
+  padding:10px 15px;
+  border-bottom:solid 1px white;
+  background: #f5f6f6;
+  background:white;
+  margin-bottom:10px;
+}
+.tidingnumb{
+  padding:6px 15px;
+  text-align: center;
+  margin-bottom:30px;
+}
+.tagbox2{
+  padding-left:15px;
+  padding-right:15px;
+}
+.textpd1{
+  margin-left:8px;
+}
+.textpd2{
+  margin-left:18px;
+}
+
+.peoplebottom{
+  height:60px;
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#333;
+align-items:center;
+justify-content:space-between;
+padding:0 30%;
+}
+.iconimg3{
+  width:36px;
+}

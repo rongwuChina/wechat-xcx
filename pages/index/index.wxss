@@ -1,0 +1,371 @@
+/**index.wxss**/
+.viewbox{
+  padding-top:45px;
+  padding-bottom:60px;
+}
+.groupstatustext .redicon{
+  text-align: center;
+}
+
+/* rongw:   group */
+.groupbox{width:100%}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.userinfo-avatar {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 20rpx;
+}
+.loading {
+bottom:60px;
+position:relative;
+height:30px;
+
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+/* rongw: grouptag  */
+
+.tagbox{
+
+  height:auto;
+  width:calc(100%-20);
+  padding-left:10px;
+  padding-right:10px;
+  padding-top: 10px;
+  position:fixed;
+  top:45px;
+  z-index:22;
+  background:white;
+  border-bottom:solid 1px rgb(222,222,222);
+ text-align: center;
+}
+.tagintro{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: spacearound;
+}
+
+.toptabnow text{
+  color:#f85959;
+  font-size:18px;
+}
+.tab1,.tab2{
+  position:relative;
+  bottom:5px;
+  margin-right:8px;
+}
+.tabbox image{
+   width:24px;
+   height:24px;
+}
+/* rongw: content  */
+.content{
+  width:100%;
+  margin-top:15px;
+}
+.contentli{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+  border-bottom:solid 2px white;  
+  background-color: white;
+  padding:5px 10px;
+  box-sizing: border-box;
+  align-items: center;
+  position:relative;
+  padding-top:10px;
+  margin-bottom:1px;
+}
+
+.groupstatus{
+    /* text-align:right; */
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+    justify-content:flex-end;
+    top:10px;
+    align-items: center;
+    flex-grow: right;
+}
+ .groupstatustext{
+   text-align:center;
+} 
+.thismygroup {
+width:20px;
+background:#f85959;
+height:4px;
+position:absolute;
+bottom:-15px;
+right:20px;
+}
+
+
+/* rongw: bottom  */
+.bottombox{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  right:0;
+  text-align: center;
+  align-content: stretch;
+  align-items: stretch;
+  background:white;
+  z-index: 5;
+}
+.tabadd {
+  bottom:124px;
+}
+
+.bottomtap{
+  width:100%;
+  height: 60px;
+  color:#a9a9a9;
+  font-size:16px;
+}
+.bottomtap image{
+width:30px;
+height:30px;
+top:6px;
+position:relative;
+left:6px;
+
+}
+.bottomtap text{
+display:block;
+margin-top:2px;
+
+}
+
+.bottomnow{
+  color:#f85959;
+}
+
+/* .joinmsg{
+  width:100%;
+  height:46px;
+  border:solid 1px #333;
+}
+.joingroupbtn{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
+.joinbtn{
+  line-height: 35px;
+  height:35px;
+  padding:0 10px;
+  font-size: 13px;
+  width: 40%;
+  margin-top:10px; 
+} */
+
+/* rongw:  myown 我的 */
+.userimage{
+  border-radius: 50%;
+}
+.myonwn{
+  width:100%;
+  padding-bottom: 60px;
+}
+.toptitle{
+   margin:0 auto;
+}
+.mylist{
+padding:10px 15px;
+background:white;
+border-bottom:solid 1px rgb(222,222,222);
+}
+.xiaoda{
+  margin-top:10px;
+  height:52px; 
+  line-height:30px;
+  position:relative;
+}
+.switch {
+bottom:21px;
+}
+
+.tabbox{
+  width:50%;
+  text-align: center;
+  height:31px;
+}
+.myonwn .toptabbox{
+  background:#333;
+  color: white;
+  font-size:24px;
+  border-bottom: 0;
+}
+.cardbox{
+padding:10px 15px;
+padding-bottom:0;
+background: #333;
+color:white;
+}
+.cardbox text{
+  color:white;
+}
+.mycard{
+  width:100%;
+}
+.mycard text{
+  text-align:center;
+  margin-bottom:10px;
+}
+.mycard .pdb2.flexrow{
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.mycard .mytagitem{
+    background:rgba(255,255,255,0.502);
+    margin-bottom:10px;
+    margin-left:5px;
+    margin-right:5px;
+    padding:6px 10px;
+    border-radius:5px;
+    font-size:16px;
+    color:rgb(255,255,255);
+}
+.libox{
+  text-align: center;
+}
+.li{
+  margin-bottom:6px;
+}
+.button{
+  padding:2px;
+}
+.myintro{
+  padding:6px 15px;
+  padding-bottom:15px;
+  text-align: center;
+  font-size: 16px;
+  line-height:22px;
+}
+.mytiding{
+  font-size:13px;
+  padding:10px 15px;
+  border-bottom:solid 1px white;
+  background: #f5f6f6;
+  background:white;
+  margin-bottom:10px;
+}
+.tidingnumb{
+  padding:10px 15px;
+  text-align: center;
+  margin-bottom:30px;
+  background:#333;
+  color:white;
+}
+.tagbox2{
+  padding-left:15px;
+  padding-right:15px;
+}
+.textpd1{
+  margin-left:8px;
+}
+.textpd2{
+  margin-left:18px;
+}
+.numb{
+  font-size:18px;
+
+}
+.pdb2{
+  margin-bottom:16px;
+}
+.dotcontent{
+  justify-content: space-around;
+  width:40px;
+  margin:0 auto;
+  box-sizing:border-box;
+  margin-top:13px;
+  padding-bottom:12px;
+}
+
+.dot{
+  display:block;
+  width:10px;
+  height:10px;
+background:#8a8a8a;
+border-radius:50%;
+}
+.dotnow{
+  background: white;
+}
+
+
+
+
+/* pages/index/login.wxss */
+.logincolor{
+  background:white;
+}
+.mylogin {
+  background:white;
+  height:100%;
+  width:100%;
+  padding-top:39px;
+  padding-bottom:30px;
+  box-sizing: border-box;
+  position:relative;
+  z-index:2;
+  display: block
+}
+.mylogin input{
+padding:12px 8px;
+background:#e9e9e9;
+font-size:18px;
+color:#333;
+line-height:1px;
+min-height:0;
+height:auto;
+
+}
+.mylogin .groupimgs{
+  width:90px;
+  height:90px;
+}
+.mylogin .libox{
+  margin-bottom:58px;
+  margin-top:6px;
+}
+.mylogin .allinput{
+  width:100%;
+  
+}
+.mylogin .contain{
+  padding:0 3%;
+  margin-bottom:26px;
+}
+.mylogin button{
+  padding:12px 8px;
+  font-size:18px;
+  line-height:25px;
+  width:46%;
+  margin-left:3%;
+  border-radius:0;
+}
+.mylogin .primary{
+   background:#f85959;
+   color:white;
+}
+.mylogin .default{
+   background:#cccccc;
+   color:white;
+}
+.mylogin .groupstatustext{
+  line-height:30px;
+  width:94%;
+}

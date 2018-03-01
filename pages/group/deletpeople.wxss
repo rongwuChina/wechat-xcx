@@ -1,0 +1,22 @@
+/* pages/group/deletpeople.wxss */
+.contentli{
+  background:white;
+}
+.contentlis{
+padding:10px 20px;
+}
+checkbox{
+  left:41px;
+}
+.addnewgroup{
+  margin-top:20px;
+  padding-bottom:100px;
+}
+.submitbtn {
+position:fixed;
+bottom:20px;
+line-height:46px;
+left:0;
+right:0;
+
+}

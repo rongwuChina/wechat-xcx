@@ -1,0 +1,69 @@
+/* pages/group/groupset.wxss */
+.content{
+  justify-content: space-between;
+  padding:15px 20px;
+  background:#333;
+  border-top:solid 1px rgb(201,201,201);
+}
+.mylist{
+padding:10px 15px;
+background:white;
+border-bottom:solid 1px rgb(222,222,222);
+}
+.xiaoda{
+  height:52px; 
+  line-height:30px;
+}
+.submitbtn{
+ line-height:45px;
+ margin-bottom:26px;
+}
+.contentli{
+  background:#333;
+  padding:15px 20px;
+  border-bottom:0;
+  position:relative;
+  padding-top:20px;
+}
+.groupimg{
+  position:absolute;
+  top:22px;
+  width:60px;
+  height:60px;
+}
+.h1{
+  color:white;
+}
+.mycard text{
+  text-align:center;
+  margin-bottom:30px;
+}
+.pdb2.flexrow{
+  flex-wrap: wrap;
+  margin-bottom:0;
+}
+.h3.ellipsis{
+  margin-top:6px;
+}
+.pdb2 .mytagitem{
+    background:rgba(255,255,255,0.502);
+    margin-bottom:0;
+    margin-top:8px;
+    margin-right:5px;
+    padding:10px 6px;
+    border-radius:5px;
+    font-size:16px;
+    color:rgb(255,255,255);
+    line-height:9px;
+    padding-top:0px;
+}
+.optime {
+  right:10px;
+  top:20%;
+}
+.switch {
+bottom:22px;
+}
+.xiaoda{
+  position:relative;
+}

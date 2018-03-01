@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px;" scroll-y="true" bindscrolltolower="searchScrollLower">
+  <view class="addnewgroup">
+    <view class="groupbox" hidden="{{allgroupshow}}">
+
+      <block wx:for="{{group.url.length}}" wx:for-index='key'>
+        <!-- rongw: content -->
+        <view class="contentli" hidden="{{othergroup}}" bindtap="opinfo" id="{{item}}">
+          <view class="groupimgbox">
+          <view class="groupimg" style="background:url('{{group.url[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+          </view>
+            <!-- <image class="groupimg" src="{{group.url[item]}}" class="groupimg">
+            </image> -->
+          </view>
+          <view class="groupinbox">
+            <view class="groupinfo  {{group.grouptype[item]==true ? 'grouptit' : ' '}}">
+              <text class="ellipsis groupname">{{group.groupname[item]}}<text hidden="{{group.groupinfo[item]==''?true:false}}" class="groupperson ellipsis" style="display:{{group.groupinfo[item]==''?'none':''}}">{{group.groupinfo[item]}}</text></text>
+
+              <text class="groupintro ellipsis">{{group.groupintro[item]}}</text>
+            </view>
+            <view class="groupstatus" hidden="{{group.grouptype[item]}}">
+              <text class="groupstatustext" status="{{group.groupstatus[item]}}" bindtap="funcname{{group.groupstatus[item]}}">{{group.grouptag[item]}}</text>
+
+            </view>
+          </view>
+
+        </view>
+
+      </block>
+    </view>
+
+  </view>
+  <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+  <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+</scroll-view>

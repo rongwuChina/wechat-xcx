@@ -1,0 +1,144 @@
+.backicon,.savegroupset{
+  position: relative;
+  z-index: 20;
+  width:30px;
+  height:30px;
+}
+.addgrouptop{
+display:flex;
+justify-content:space-between;
+padding:10px;
+background:#f3f5f7;
+box-sizing:border-box;
+height:40px;
+position:relative;
+}
+.inputrow{
+  display: flex;
+  justify-content: space-between;
+  padding:15px 10px;
+  width: 100%;
+  box-sizing:border-box;
+  align-items: center;
+  background: #f4f4f4;
+  border-top:solid 2px white;
+  border-bottom:solid 2px white;
+}
+.inpucolum{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding:15px 10px;
+  width: 100%;
+  box-sizing:border-box;
+  background: #f4f4f4;
+  border-top:solid 2px white;
+  border-bottom:solid 2px white;
+}
+input{padding-left: 0;height:30px;font-size:13px;}
+.addbtn{
+  font-size: 13px;
+  line-height: 35px;
+  height: 35px;
+  position: fixed;
+  bottom: 8px;
+  background-color: #ff6607;
+  left:8px;
+  right:8px;
+}
+input{width:100%;border-bottom:solid 1px #333333;padding:10px 0;height:auto;}
+.setgrouptips{font-size: 12px;color:#dcdcdc;margin-top:5px;}
+.telltips{font-size: 12px;color:#8a8a8a;margin-top:5px;}
+.group{padding:10px;}
+
+.xd-img-user1{
+    margin:0 auto;
+    position:absolute;
+    left:0;
+    right:0;
+    width:200px;
+    height:240px;
+    top:70px;
+}
+.groupintrobox{
+  border:solid 1px #dcdcdc;
+  padding:12px;
+  box-sizing:border-box;
+}
+/* rongw: grouptag  */
+
+.tagbox{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-start;
+  height:auto;
+  width:calc(100%-20);
+  padding-left:10px;
+  padding-right:10px;
+  padding-top: 10px;
+  width:100%;
+}
+.tagitem{
+  padding:5px 10px;
+  border:solid 1px #dcdcdc;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  margin-right:2%;
+  min-width:18%;
+  box-sizing:border-box;
+
+}
+
+.thismysex{
+  background: #ff6607;
+  color:white;
+  border:none;
+}
+
+/**
+*身份证
+**/
+.xd-img-id1,.xd-img-id2.,.xd-img-id3{
+    margin:0 auto;
+    width:200px;
+    height:240px;
+}
+.idimagebox{
+  width:46px;
+  height:46px;
+}
+.groupsupply .xd-container view{
+  padding: 10px 15px;
+  border:solid 1px #dcdcdc;
+  box-sizing:border-box;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+.groupsupply .xd-container text{
+position:relative;
+bottom:15px;
+left:10px;
+}
+
+/**
+*选择职务
+*/
+.picker{
+  border-top:solid 1px #dcdcdc;
+  border-bottom:solid 1px #dcdcdc;
+  margin-top:20px;
+}
+.pickerchoose{
+  display:block;
+  color:#ff6607;
+}
+.groupbox{
+  position:relative;
+}
+.maincontain{
+  border-top:solid 1px rgb(201,201,201);
+}
+.groupname{
+  word-break:break-all;
+}

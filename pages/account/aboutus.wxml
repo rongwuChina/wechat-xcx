@@ -1,0 +1,5 @@
+<!--pages/account/aboutus.wxml-->
+<view class="contain" style="padding:50px 30px;margin-top:20px;">
+   <text class="p2">{{content}}</text>
+</view>
+

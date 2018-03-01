@@ -1,0 +1,261 @@
+<!--pages/account/opaddrbox.wxml-->
+<view class="myidcard">
+  
+  <view class="topbgimg">
+      <text hidden="{{morehide}}" catchtap='moretool' class="" style="font-size:18px;color:white;float:right;margin-right:20px;margin-top:10px;">更多</text>
+      <image src="../image/myback.png"></image>
+  </view>
+    
+  <view class="cardimgbox contain">
+
+    <!-- <block  wx:for='{{group}}'> -->
+    <view class="libox flexrow">
+      <view class="dxcardimgbox">
+        <image class="dxcardimg" src="{{group.url}}"></image>
+      </view>
+
+      <view class="viewbox">
+        <text class="p1" style="margin-right:6px;">{{group.see}} <text class="p4">浏览</text></text>
+        <text class="p1" style="margin-right:6px;">{{group.friend}} <text class="p4">人脉</text></text>
+        <text class="p1" style="margin-right:6px;">{{group.share}} <text class="p4">分享</text></text>
+      </view>
+    </view>
+
+
+    <view class="pdb1 namebox">
+      <text class="p1">{{group.groupname}}</text>
+      <text class="picon" hidden='{{group.job.length==0?true:false}}'>{{group.job}}</text>
+    </view>
+    <view class="pdb1">
+      <!-- <image class="iconimg" src="../image/addr.png"></image>
+    <text class="h4">杭州</text> -->
+      <image class="iconimg" src="../image/duty2.png"></image>
+      <text class="p3">{{group.industy}}</text>
+      <image class="iconimg pdl24" src="../image/age2.png"></image>
+      <text class="p3">{{group.generation}}</text>
+    </view>
+    <view>
+      <image class="iconimg" src="../image/phone.png"></image>
+      <text class="p3">{{group.phone}}</text>
+      <image class="iconimg pdl24" src="../image/weixin.png"></image>
+      <text class="p3">{{group.weixin}}</text>
+    </view>
+
+    <view class="ppiconbox pdb2">
+      <block wx:for="{{group.groupicon.length}}" wx:for-index='index'>
+        <text class="peopleicon h4">
+             {{group.groupicon[index]}}
+      </text>
+      </block>
+    </view>
+
+    <view class="p3 myintro">
+      {{group.groupintro}}
+    </view>
+
+
+  </view>
+
+  <block wx:for="{{dynamic.people.length}}" wx:fon-indx="key">
+          <view class="dynamicbox contain" bindtap="dynamicdetail" id="{{dynamic.id[item]}}">
+            <!-- rongw: 个人信息展示 -->
+            <view class="contentli" bindtap="opinfo">
+              <view class="groupimgbox">
+                <!-- <image class="groupimg" src="{{dynamic.people[item]}}" class="groupimg">
+                </image> -->
+                <view class="groupimg" style="background:url('{{dynamic.people[item]}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+                </view>
+              </view>
+              <view class="groupinbox">
+                <view class="groupinfo">
+                  <text class="ellipsis h1">{{dynamic.groupname[item]}}</text>
+                  <text class="h3 ellipsis">{{dynamic.groupinfo[item]}}</text>
+                </view>
+                <view class="optime p4">
+                  {{dynamic.time[item]}}
+                </view>
+              </view>
+
+
+            </view>
+
+            <!-- rongw: 动态详情 -->
+            <view class="dynamicintro">
+
+              <view class="dynamicp">
+                {{dynamic.title[item]}}
+              </view>
+              <view class="{{dynamic.image[item].length > 3 ? 'dynamicimgbox' : ''}} flexrow">
+                <block wx:for="{{dynamic.image[item].length}}" wx:for-item="items">
+                  <view class="image {{dynamic.image[item].length == 1 ? 'oneimage' : ''}} {{dynamic.image[item].length == 2 ? 'twoimage' : ''}} {{dynamic.image[item].length == 3 ? 'threeimage' : ''}} {{dynamic.image[item].length == 4 ? 'fourimage' : ''}}" style="background:url('{{dynamic.image[item][items]}}'); height:{{imgwidth[item]}}px;background-size:cover;background-repeat:no-repeat;background-position:center;">
+                    
+                  </view>
+                  <!-- <image src="{{dynamic.image[item][items]}}" class="{{dynamic.image[item].length == 1 ? 'oneimage' : ''}} {{dynamic.image[item].length == 2 ? 'twoimage' : ''}} {{dynamic.image[item].length == 3 ? 'threeimage' : ''}}"></image> -->
+                  
+                </block>
+
+              </view>
+            </view>
+
+            <view class="statebox flexrow">
+              <view class="stateli">
+                <image class="iconimg" src="../image/see.png"></image>
+                <text class="p4">{{dynamic.see[item]}}</text>
+              </view>
+              <view class="stateli">
+                <image class="iconimg" src="../image/speake.png"></image>
+                <text class="p4">{{dynamic.speake[item]}}</text>
+              </view>
+              <view class="stateli">
+                <image class="iconimg" src="../image/greate.png"></image>
+                <text class="p4">{{dynamic.greate[item]}}</text>
+              </view>
+              <view class="stateli">
+                <image class="iconimg" src="../image/share.png"></image>
+                <text class="p4">{{dynamic.share[item]}}</text>
+              </view>
+            </view>
+
+          </view>
+        </block>
+  <!-- </block> -->
+
+<!-- rongw: 操作开始 -->
+<view class="dwt" hidden="{{show1}}"></view>
+<view class="joingroup" hidden="{{show1}}">
+
+  <view class="infobox">
+
+    <form bindsubmit='addmyfriend' bindreset='joinreset'>
+      <view class="infotitle">
+        申请加他为好友
+      </view>
+
+      <input name="joingroupmsg" placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn cancelbtn" form-type='reset'>{{joinbtn1}}</button>
+        <button class="joinbtn subbtn" form-type='submit'>{{joinbtn2}}</button>
+      </view>
+
+
+    </form>
+
+  </view>
+</view>
+
+<view class="dwt" hidden="{{show2}}"></view>
+<view class="joingroup" hidden="{{show2}}">
+
+  <view class="infobox">
+
+    <form bindsubmit='deleteher' bindreset='joinreset'>
+      <view class="infotitle">
+        踢出群聊
+      </view>
+
+      <input name="joingroupmsg" placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn cancelbtn" form-type='reset'>{{joinbtn1}}</button>
+        <button class="joinbtn subbtn" form-type='submit'>{{joinbtn2}}</button>
+      </view>
+
+
+    </form>
+
+  </view>
+</view>
+
+<view class="dwt" hidden="{{show3}}"></view>
+<view class="joingroup" hidden="{{show3}}">
+
+  <view class="infobox">
+
+    <form bindsubmit='setasmanager' bindreset='joinreset'>
+      <view class="infotitle">
+        设置为管理员
+      </view>
+
+      <input name="joingroupmsg" placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn cancelbtn" form-type='reset'>{{joinbtn1}}</button>
+        <button class="joinbtn subbtn" form-type='submit'>{{joinbtn2}}</button>
+      </view>
+
+
+    </form>
+
+  </view>
+</view>
+
+
+<view class="dwt" hidden="{{show4}}"></view>
+<view class="joingroup" hidden="{{show4}}">
+
+  <view class="infobox">
+
+    <form bindsubmit='setaswriter' bindreset='joinreset'>
+      <view class="infotitle">
+        设置为主编
+      </view>
+
+      <input name="joingroupmsg" placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn cancelbtn" form-type='reset'>{{joinbtn1}}</button>
+        <button class="joinbtn subbtn" form-type='submit'>{{joinbtn2}}</button>
+      </view>
+
+
+    </form>
+
+  </view>
+</view>
+
+
+<view class="dwt" hidden="{{show5}}"></view>
+<view class="joingroup" hidden="{{show5}}">
+
+  <view class="infobox">
+
+    <form bindsubmit='defaultmanager' bindreset='joinreset'>
+      <view class="infotitle">
+        取消管理员
+      </view>
+
+      <input name="joingroupmsg" placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn cancelbtn" form-type='reset'>{{joinbtn1}}</button>
+        <button class="joinbtn subbtn" form-type='submit'>{{joinbtn2}}</button>
+      </view>
+
+
+    </form>
+
+  </view>
+</view>
+
+
+<view class="dwt" hidden="{{show6}}"></view>
+<view class="joingroup" hidden="{{show6}}">
+
+  <view class="infobox">
+
+    <form bindsubmit='defaultwriter' bindreset='joinreset'>
+      <view class="infotitle">
+        取消主编
+      </view>
+
+      <input name="joingroupmsg" placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn cancelbtn" form-type='reset'>{{joinbtn1}}</button>
+        <button class="joinbtn subbtn" form-type='submit'>{{joinbtn2}}</button>
+      </view>
+
+
+    </form>
+
+  </view>
+</view>
+
+
+
+</view>

@@ -1,0 +1,5 @@
+/* pages/account/mydynamic.wxss */
+.dynamicbox{
+  margin-top:10px;
+  
+}

@@ -1,0 +1,110 @@
+<view class="infodetail">
+  <!-- rongw  申请加群 -->
+
+  <!-- rongw  我申请加群中-->
+  <view class="groupbox " hidden="{{setgroup1}}">
+
+    <view class="contain maincontain">
+
+      <!-- rongw: 群展示 -->
+      <view class="contentli bdcontain" hidden="{{othergroup}}">
+        <view class="groupimgbox">
+          <view class="groupimg" style="background:url('{{url}}');background-size:cover;background-repeat:no-repeat;background-position:center;">
+          </view>
+          <!-- <image class="groupimg" src="{{url}}" class="groupimg">
+          </image> -->
+        </view>
+        <view class="groupinfo  {{grouptype[0]==false ? 'grouptit' : ' '}}">
+          <view class="groupname">{{name}}</view>
+          <view class="grouptip ellipsis" hidden="{{groupintroshow}}">群人数：
+            <text class="grouppersonnum" hidden="{{groupintroshow}}">{{groupinfo}}</text>
+          </view>
+          <view hidden="{{peopleintroshow}}" class="grouptip ellipsis">
+            申请加好友
+          </view>
+        </view>
+      </view>
+
+      <!-- rongw: 群介绍 -->
+      <view class="bdcontain pdcontain" hidden="{{groupintroshow}}">
+        <view class="grouptitler">群介绍</view>
+        <view class="" style="font-size:18px;color:rgb(102,102,102)">
+          {{groupintro}}
+        </view>
+      </view>
+      <!-- rongw: 消息内容 -->
+      <view class="pdcontain">
+        <view class="grouptitler" hidden="{{systermhide}}">申请理由</view>
+        <view class="groupintro" hidden="{{indexhide}}">
+          {{infocontent}}
+        </view>
+
+      </view>
+    </view>
+    <!-- rongw: 处理按钮 -->
+    <view hidden="{{defaultshow}}" style="text-align:center;">
+      <text class="groupstatustext firstbtn defaultbtn " status="{{groupstatus[0]}} ">
+          {{grouptag}}
+      </text>
+
+    </view>
+
+    <!-- rongw: 处理按钮 -->
+    <view class="infobtnbox" hidden="{{toolshow1}}">
+      <text class="groupstatustext submitbtn firstbtn" bindtap="acceptgroup">
+                同意
+            </text>
+      <text class="groupstatustext primarybtn " bindtap="rejectgroup">
+                拒绝
+            </text>
+    </view>
+    <!-- rongw: 重新申请加群 -->
+    <view class="infobtnbox" hidden="{{toolshow2}}">
+      <text class="groupstatustext submitbtn firstbtn " bindtap="joingroup">
+                重新申请
+      </text>
+    </view>
+    <!-- rongw: 重新申请加好友 -->
+    <view class="infobtnbox" hidden="{{toolshow3}}">
+      <text class="groupstatustext submitbtn firstbtn " bindtap="joinpeople">
+                重新申请
+      </text>
+    </view>
+    <!-- rongw: 首页进入时处理按钮 -->
+    <view class="infobtnbox" hidden="{{toolshow4}}">
+      <text class="groupstatustext firstbtn submitbtn " bindtap="joingroup">
+          {{grouptag}}
+      </text>
+    </view>
+  </view>
+
+  <view class="dwt" hidden="{{joinshow}}"></view>
+  <view class="joingroup" hidden="{{joinshow}}">
+    <form bindsubmit='joinsubmit' bindreset='joinreset'>
+      <input name="joingroupmsg " placeholder='申请加群' placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn" form-type='reset' type="default">取消</button>
+        <button class="joinbtn" form-type='submit' type="primary">申请</button>
+      </view>
+
+    </form>
+  </view>
+
+  <view class="dwt" hidden="{{joinshow2}}"></view>
+  <view class="joingroup" hidden="{{joinshow2}}">
+    <form bindsubmit='joinsubmit2' bindreset='joinreset2'>
+      <input name="joingroupmsg " placeholder='申请加好友' placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn" form-type='reset' type="default">取消</button>
+        <button class="joinbtn" form-type='submit' type="primary">申请</button>
+      </view>
+
+    </form>
+  </view>
+
+
+
+
+
+
+</view>

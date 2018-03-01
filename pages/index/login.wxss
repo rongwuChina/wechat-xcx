@@ -1,0 +1,56 @@
+/* pages/index/login.wxss */
+.groupimgbox{
+  margin-top:39px;
+}
+page{
+  background-color: white;
+}
+input{
+padding:12px 8px;
+background:#e9e9e9;
+font-size:18px;
+color:#333;
+line-height:1px;
+min-height:0;
+height:auto;
+
+}
+.groupimgs{
+  width:90px;
+  height:90px;
+}
+.libox{
+  margin-bottom:58px;
+  margin-top:6px;
+}
+.allinput{
+  width:100%;
+  
+}
+.codeinput{
+  /* width:50%; */
+}
+.contain{
+  padding:0 3%;
+  margin-bottom:26px;
+}
+button{
+  padding:12px 8px;
+  font-size:18px;
+  line-height:25px;
+  width:46%;
+  margin-left:4%;
+  border-radius:0;
+
+}
+.primary{
+   background:#f85959;
+   color:white;
+}
+.default{
+   background:#cccccc;
+   color:white;
+}
+.groupstatustext{
+  line-height:30px;
+}

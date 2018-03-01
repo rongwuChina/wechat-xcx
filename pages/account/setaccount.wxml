@@ -1,0 +1,167 @@
+<view class="addnewgroup">
+  <view class="toptabbox">
+  <view catchtap='saveback' style="width:50px;height:35px;text-align:center;padding-right:20px;box-sizing:border-box;line-height:35px;position:relative;z-index:5;">
+    <image mode="widthFix" src="../image/back.png" style="width: 11px; margin-top: 2px; height: 0px;transform:rotate(180deg);margin-left:20px;position:relative;z-index:5;"></image>
+    </view>
+    <text class="toptitle">{{titlename}}</text>
+    <text class="right" style="width:100px;" catchtap='savethis'>完成</text>
+  </view>
+  <!-- rongw 头像 -->
+  <view class="groupname" hidden="{{setgroup1}}">
+    <view class="xd-container">
+      <form bindsubmit="bindSaveTap">
+        <image class="xd-img-user1" catchtap="chooseImageTap" src="{{logo}}"></image>
+      </form>
+    </view>
+  </view>
+
+  <!-- rongw  名称 -->
+  <view class="groupname" hidden="{{setgroup2}}">
+    <view class="group">
+      <input id="name" maxlength="32" class="textright" placeholder='名称' placeholder-class='placeholder' value="{{myname}}" bindinput='nameinput'></input>
+      <text class="telltips">设置真实名字有利于你的人脉推广</text>
+    </view>
+  </view>
+
+  <!-- rongw  名称 -->
+  <view class="groupname" hidden="{{setgroup11}}">
+    <view class="group">
+      <textarea  hidden="{{setgroup11}}" id="name" maxlength="64" placeholder='{{theintro}}' value="{{myintro}}" bindinput='introinput'></textarea>
+      <text class="telltips">描述一下你自己有助于朋友更加了解你哦</text>
+    </view>
+  </view>
+  <!-- rongw  性别 -->
+  <view class="grouptag" hidden="{{setgroup3}}">
+    <!-- <input class="textright" placeholder='{{groupnameint}}' placeholder-class='placeholder'></input> -->
+    <view class="tagbox">
+      <text class="tagitem sexitem {{thismysex==0 ? 'thismysex' : ' '}}" id="0" bindtap="sexchoose">男</text>
+      <text class="tagitem sexitem {{thismysex==1 ? 'thismysex' : ' '}}" id="1" bindtap="sexchoose">女</text>
+      <!-- <text class="tagitem sexitem {{thismysex==2 ? 'thismysex' : ' '}}" id="2" bindtap="sexchoose">秘密</text> -->
+
+    </view>
+  </view>
+
+  <!-- rongw  行业 -->
+  <view class="" hidden="{{setgroup4}}">
+    <view class="tagbox">
+      <block wx:for="{{dutyname}}" wx:for-index="key">
+        <text class="tagitem {{tagchoose[key]==key ? 'tagchoose' : ''}}" id="{{key}}" bindtap="tagchoose2">{{item}} </text>
+      </block>
+    </view>
+    <text bindtap="joingroup" class="centertit  hrefinfo">找不到相符行业</text>
+
+    <view class="dwt" hidden="{{joinshow}}"></view>
+    <view class="joingroup" hidden="{{joinshow}}">
+      <form bindsubmit='subduty' bindreset='joinreset'>
+        <text class="centertit">行业名称不超过10个字</text>
+        <input name="name" placeholder='输入行业名称' placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+        <view class="joingroupbtn">
+          <button class="joinbtn" form-type='reset' type="default">取消</button>
+          <button class="joinbtn" form-type='submit' type="primary">确认</button>
+        </view>
+
+      </form>
+    </view>
+  </view>
+
+  <!-- rongw  职务 -->
+  <view class="grouplocal flexrowss" hidden="{{setgroup5}}">
+
+    <view class="left_tabbar">
+      <scroll-view scroll-y="true" style="height:{{deviceHeight}}px;" class="left_tabbar_list">
+        <block wx:for="{{jobbox}}">
+          <view bindtap="changeTab" data-index="{{index}}" data-name="{{item.name}}" class="left_tabbar_item {{activeIndex==index?'active':''}}">{{item.name}}</view>
+        </block>
+
+      </scroll-view>
+    </view>
+    <view class="right_content">
+      <scroll-view bindscrolltolower="getMore" scroll-y="true" style="height:{{deviceHeight}}px;" class="tab_panel">
+        <block wx:for="{{jobbox2}}">
+
+          <block wx:for="{{item.subJobDuty}}" wx:for-item="{{index}}">
+            <view>
+              <text>{{item.subJobDuty[index].name}}</text>
+              <view class="section tagbox">
+                <block wx:for="{{item.subJobDuty[index].subJobDuty}}" wx:for-item="key">
+                  <text class="tagitem {{jobthis==key.id ? 'tagchoose' : ''}}" id="{{key.id}}" bindtap="jobchoose">{{key.name}}              </text>
+                </block>
+              </view>
+            </view>
+          </block>
+
+        </block>
+      </scroll-view>
+    </view>
+
+  </view>
+
+
+  <!-- rongw  年龄段 -->
+  <view class="groupname" hidden="{{setgroup6}}">
+    <view class="group tagbox">
+      <!-- <input id="name" class="textright" placeholder='年龄段' placeholder-class='placeholder' value="{{myage}}"></input> -->
+
+      <block wx:for="{{agename}}" wx:for-index="key">
+        <text class="tagitem {{tagthis2==key+1 ? 'tagchoose' : ''}}" id="{{key+1}}" bindtap="agechoose">{{item}} </text>
+      </block>
+      <text class="telltips">真实的年龄段有利于你的人脉推广</text>
+    </view>
+  </view>
+
+
+  <!-- rongw  电话 -->
+  <view class="groupname" hidden="{{setgroup7}}">
+    <view class="group">
+      <input type="number" id="name" class="textright" placeholder='电话/手机号' placeholder-class='placeholder' value="{{myphone}}" bindinput='phoneinput'></input>
+      <text class="telltips">留下你的手机号有利于你的人脉推广哦</text>
+    </view>
+  </view>
+
+
+  <!-- rongw  微信 -->
+  <view class="groupname" hidden="{{setgroup8}}">
+    <view class="group">
+      <input id="name" class="textright" placeholder='微信号' placeholder-class='placeholder' value="{{myweixin}}" bindinput='wxinput'></input>
+      <text class="telltips">留下你的微信号有利于你的人脉推广</text>
+    </view>
+  </view>
+
+
+  <!-- rongw  位置 -->
+  <!-- <view class="groupname" hidden="{{setgroup9}}">
+    <view class="group">
+      <input id="name" class="textright" placeholder='{{mylocal}}' placeholder-class='placeholder'></input>
+      <text class="telltips">真实位置有利于你的人脉推广</text>
+    </view>
+  </view> -->
+
+
+  <!-- rongw  设置我的标签 -->
+  <view class="groupsupply" hidden="{{setgroup10}}">
+    <text hidden="{{setgroup10}}" class="p3" style="margin-bottom:25px;display:block;padding:0 20px;">
+     提示：你可以从以下公共标签中选择至多三个标签，除此之外你可以添加你的个人专属标签
+    </text>
+    <view class="tagbox2 tagless" bindtap="setmytag">
+      <block wx:for="{{tagname}}" wx:for-index="key">
+        <text class="tagitem {{tagchoose[key]==key ? 'tagchoose' : ''}}" id="{{key}}" bindtap="tagchoose">{{item}}</text>
+      </block>
+    </view>
+
+    <button class="addbtn btn" type='primary' bindtap="joingroup">添加自定义标签</button>
+    <view class="dwt" hidden="{{joinshow}}"></view>
+    <view class="joingroup" hidden="{{joinshow}}">
+      <form bindsubmit='submytag' bindreset='joinreset'>
+        <text class="centertit">输入标签不超过10个字</text>
+        <input name="name" placeholder='输入标签名称' placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+        <view class="joingroupbtn">
+          <button class="joinbtn" form-type='reset' type="default">取消</button>
+          <button class="joinbtn" form-type='submit' type="primary">确认</button>
+        </view>
+
+      </form>
+    </view>
+
+  </view>
+
+</view>

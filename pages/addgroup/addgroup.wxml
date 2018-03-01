@@ -1,0 +1,45 @@
+<view class="">
+<view class="formcontent">
+
+   <!-- rongw: 群头像 -->
+    <view class="inputrow" style="border-bottom:solid 1px rgb(201,201,201);"  bindtap='setimage'>
+      <text>群头像</text>
+      <image class="groupimgs" src="{{groupimage}}"></image>
+    </view>
+
+   <!-- rongw: 群名称 -->
+    <view class="inputrow" bindtap='setname' style="margin-top:0;">
+      <text>群名称</text>
+      <input class="textright" placeholder='请输入群名称' placeholder-class='placeholder' disabled='true' value="{{groupname}}"></input>
+    </view>
+    <!-- rongw: 群分类 -->
+    <view class="inpucolum" bindtap='settag'>
+      <text>群分类</text>
+      <input placeholder='请添加群分类标签' placeholder-class='placeholder' disabled='true' value='{{grouptag}}'></input>
+    </view>
+     <!-- rongw: 群介绍 -->
+    <view class="inpucolum" bindtap='setintro'>
+      <text>群介绍</text>
+      <input placeholder='请输入群介绍' placeholder-class='placeholder' disabled='true' value='{{groupintro}}'></input>
+    </view>
+    <!-- rongw: 群位置 -->
+    <!-- <view class="inputrow" bindtap='getlocal'>
+      <text>{{grouplocal}}</text>
+      <input placeholder='请选择群位置' placeholder-class='placeholder' disabled='true'></input>
+    </view> -->
+    <!-- rongw: 群认证 -->
+    <view class="inputrows" bindtap='getidentify'>
+    <text class="vidia" hidden="{{groupidentifyid==0 || groupidentifyid==1 ?false:true}}">V</text>
+    <image style="width:40px;height:40px;" src="../image/renzheng.png" hidden="{{groupidentifyid==2?false:true}}"></image>
+    <image style="width:40px;height:40px;" src="../image/imagegsrenzheng.png" hidden="{{groupidentifyid==3?false:true}}"></image>  
+      <text class="groupidentify">群认证</text>
+      
+      <input placeholder='认证的群会有更多的推荐机会哦' placeholder-class='placeholder' disabled='true' value='{{groupidentify}}'></input>
+    </view>
+
+    <button class='addbtn' form-type="submit" type="primary" catchtap="groupsubmit">{{submit}}</button>
+
+</view>
+
+
+</view>

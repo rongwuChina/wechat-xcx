@@ -1,0 +1,79 @@
+<view class="addnewgroup">
+  <view class="toptabbox">
+  <view catchtap='saveback' style="width:50px;height:35px;text-align:center;padding-right:20px;box-sizing:border-box;line-height:35px;position:relative;z-index:5;">
+  <image mode="widthFix" src="../image/back.png" style="width: 11px; margin-top: 2px; height: 0px;transform:rotate(180deg);margin-left:20px;position:relative;z-index:5;"></image>
+  </view>
+ <text class="toptitle">{{titlename}}</text><text class="right" style="width:100px;" catchtap='savethis'>完成</text></view>
+  <!-- rongw 群头像 -->
+  <view class="groupname" hidden="{{setgroup1}}">
+    <view class="xd-container" style="text-align:center;padding-bottom:60px;">
+      <form bindsubmit="bindSaveTap">
+        <image mode="widthFix"class="xd-img-user1" catchtap="chooseImageTap" src="{{logo}}"></image>
+      </form>
+    </view>
+  </view>
+  <!-- rongw  群名称 -->
+  <view class="groupname" hidden="{{setgroup2}}">
+    <view class="group">
+      <input id="name" maxlength="32" class="textright" placeholder='请输入群名称' placeholder-class='placeholder' bindinput="nameinput" value='{{name}}'></input>
+      <text class="telltips">好名字可以让人印象深刻哦</text>
+    </view>
+  </view>
+  <!-- rongw  群分类 -->
+  <view class="grouptag" hidden="{{setgroup3}}">
+    <!-- <input class="textright" placeholder='{{groupnameint}}' placeholder-class='placeholder'></input> -->
+    <!-- rongw：群分类标签 -->
+    <view class="tagbox">
+      <block wx:for="{{tagname}}" wx:for-index="key">
+        <text class="tagitem {{tagchoose[key]==key ? 'tagchoose' : ''}}" id="{{key}}" bindtap="tagchoose">{{item}}</text>
+      </block>
+    </view>
+  </view>
+
+  <!-- rongw  群介绍 -->
+  <view class="groupintro" hidden="{{setgroup4}}">
+    <view class="group">
+      <textarea id="intro" maxlength="64" class="groupintrobox" placeholder='请输入群介绍' placeholder-class='placeholder' bindinput="introinput" value="{{intro}}" style="display:{{setgroup4==true?none:block}}"></textarea>
+      <text class="telltips">群介绍可以让人对群的状况一目了然</text>
+    </view>
+  </view>
+
+  <!-- rongw  群地址 -->
+  <!-- <view class="grouplocal" hidden="{{setgroup5}}">
+    <map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
+    <input class="textright" placeholder='{{groupnameint}}' placeholder-class='placeholder'></input>
+  </view> -->
+
+  <!-- rongw  群认证 -->
+  <view class="groupsupply" hidden="{{setgroup6}}">
+
+    <view class="xd-container">
+      <form bindsubmit="bindSaveTap">
+        <view catchtap="chooseImageTap2">
+              <image mode="widthFix" class="idimagebox xd-img-id1"  src="../image/camera.png"></image><text>身份证正面</text>
+              <image mode="widthFix" class="idimages" src="{{identy[0]}}">
+              </image>
+        </view>
+
+
+        <view catchtap="chooseImageTap3">
+                <image mode="widthFix" class="idimagebox xd-img-id2"  src="../image/camera.png"></image><text>身份证反面</text>
+                <image mode="widthFix" class="idimages" src="{{identy[1]}}">
+              </image>
+        </view>
+
+
+        <view catchtap="chooseImageTap4">
+        <image mode="widthFix" class="idimagebox xd-img-id3" src="../image/camera.png"></image><text>营业执照</text>
+        <image mode="widthFix" class="idimages" src="{{identy[2]}}">
+              </image>
+        </view>
+        
+      </form>
+    </view>
+
+
+
+  </view>
+
+</view>

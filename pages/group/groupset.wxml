@@ -1,0 +1,81 @@
+<!--pages/group/groupset.wxml-->
+<view>
+
+  <!-- rongw: 群介绍 -->
+  <view class="contentli">
+    <view class="groupimgbox">
+      <image class="groupimg" src="{{group.imageurl}}" class="groupimg">
+      </image>
+    </view>
+    <view class="groupinbox">
+      <view class="groupinfo" style="width:95%">
+        <text class="ellipsis h1">{{group.groupname}}</text>
+        <text class="h3 ellipsis">{{group.groupinfo}}</text>
+        <view class="pdb2 flexrow">
+          <block wx:for="{{mytag}}">
+            <text class="p1 mytagitem">
+                {{item}}
+            </text>
+          </block>
+        </view>
+      </view>
+      <view hidden="{{adminhide}}" class="optime p4" catchtap='groupintroset'>
+        <image mode="widthFix" style="width:10px;height:10px;margin-top:10px;" src="../image/back.png"></image>
+      </view>
+
+    </view>
+  </view>
+  <view class="flexrow content" style="justify-content: space-between;">
+    <view>
+      <image class="iconimg" src="../image/qunsay.png"></image>
+      <text class="p4">群聊号</text>
+    </view>
+    <view class="p4">
+      {{groupid}}
+    </view>
+  </view>
+  <view style="min-height:250px;">
+
+  <!-- rongw: 加入需审核 -->
+  <view class="flexrow mylist xiaoda" hidden="{{adminhide}}" style="  margin-top:10px;">
+    <text>加入需审核</text>
+    <switch checked="{{isJoinNeedReview==0 ? false : true}}" size="20" class="right switch" bindchange="switchChange" id="1"/>
+  </view>
+  <!-- rongw: 排序重置 -->
+  <view class="flexrow mylist xiaoda">
+    <text>排序重置</text>
+    <switch id="2" checked="{{isTopRanking==0 ? false : true}}" size="20" class="right switch" bindchange="switchChange" />
+  </view>
+  <!-- rongw: AI小搭群推荐服务 -->
+  <view class="flexrow mylist xiaoda"  hidden="{{adminhide}}">
+    <text>AI小搭群推荐服务</text>
+    <switch id="3" checked="{{isXiaodaRecommend==0 ? false : true}}" size="20" class="right switch" bindchange="switchChange" />
+  </view>
+  <!-- rongw: 禁止群拉人 -->
+  <view class="flexrow mylist xiaoda"  hidden="{{adminhide}}">
+    <text>禁止群拉人</text>
+    <switch id="4" checked="{{isShareUser==0 ? false : true}}" size="20" class="right switch" bindchange="switchChange" />
+  </view>
+  <!-- rongw: 共享群中人脉 -->
+  <view class="flexrow mylist xiaoda"  hidden="{{adminhide}}">
+    <text>需要完善个人信息</text>
+    <switch id="5" checked="{{isNeedFillUserInfo ==0 ? false : true}}" size="20" class="right switch" bindchange="switchChange" />
+  </view>
+  
+  </view>
+
+  <text  bindtap="joingroup" class="groupstatustext submitbtn firstbtn">退出该群</text>
+
+</view>
+
+  <view class="dwt" hidden="{{joinshow}}"></view>
+  <view class="joingroup" hidden="{{joinshow}}">
+    <form bindsubmit='joinsubmit' bindreset='joinreset'>
+      <input name="joingroupmsg " placeholder='退出群聊' placeholder-class='placeholder' class="joinmsg" confirm-type='send' value="{{thejoinmsg}}"></input>
+      <view class="joingroupbtn">
+        <button class="joinbtn" form-type='reset' type="default">取消</button>
+        <button class="joinbtn" form-type='submit' type="primary">申请</button>
+      </view>
+
+    </form>
+  </view>

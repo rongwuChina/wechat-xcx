@@ -1,0 +1,69 @@
+<view class="addnewgroup" hidden="{{setgroup1}}">
+  <!-- <view class="toptabbox"><image catchtap='saveback' mode="widthFix" src="../image/back.png" style="width: 10px; margin-top: 2px; height: 0px;transform:rotate(180deg);margin-left:20px;position:relative;z-index:5;"></image>
+ <text class="toptitle">设置我的名片</text></view> -->
+<view class="formcontent">
+  <form bindsubmit='newgroupsub' bindreset='newgroupreset'>
+   <!-- rongw: 群头像 -->
+    <view class="inputrow"  bindtap='setimage'>
+      <text>我的头像</text>
+      <image class="groupimgs" src="{{logo}}"></image>
+    </view>
+   <!-- rongw: 名称 -->
+    <view class="inputrow" bindtap='setname'>
+      <text>名称</text>
+      <input class="textright" placeholder='我的头像' placeholder-class='placeholder' disabled='true' value="{{myname}}"></input>
+    </view>
+    <!-- rongw: 描述 -->
+    <view class="inputrow" bindtap='setintro'>
+      <text>描述</text>
+      <input class="textright" placeholder='设置' placeholder-class='placeholder' disabled='true' value="{{myintro}}"></input>
+    </view>
+    <!-- rongw: 性别 -->
+    <view class="inputrow" bindtap='setsex'>
+      <text>性别</text>
+      <input class="textright" placeholder='名称' placeholder-class='placeholder' disabled='true' value=
+      "{{mysex}}"></input>
+    </view>
+     <!-- rongw: 行业 -->
+    <view class="inputrow" bindtap='setjob'>
+      <text>行业</text>
+      <input class="textright" placeholder='性别' placeholder-class='placeholder' disabled='true' value="{{myjob}}"></input>
+    </view>
+    <!--rongw 职务 -->
+    <view class="inputrow" bindtap='setjobname'>
+      <text>职务</text>
+      <input class="textright" placeholder='行业' placeholder-class='placeholder' disabled='true' value="{{myjobname}}" ></input>
+    </view>
+    <!--rongw 年龄段 -->
+    <view class="inputrow" bindtap='setage'>
+      <text>年龄段</text>
+      <input class="textright" placeholder='年龄段' placeholder-class='placeholder' disabled='true' value="{{myage}}" ></input>
+    </view>
+    <!--rongw 电话 -->
+    <view class="inputrow" bindtap='setphone'>
+      <text>电话</text>
+      <input class="textright" placeholder='电话' placeholder-class='placeholder' disabled='true' value="{{myphone}}"></input>
+    </view>
+    <!--rongw 微信 -->
+    <view class="inputrow" bindtap='setweixin'>
+      <text>微信</text>
+      <input class="textright" placeholder='微信' placeholder-class='placeholder' disabled='true' value="{{myweixin}}" ></input>
+    </view>
+    <!--rongw 位置 -->
+    <!-- <view class="inputrow" bindtap='setlocal'>
+      <text>位置</text>
+      <input class="textright" placeholder='{{mylocal}}' placeholder-class='placeholder' disabled='true' ></input>
+    </view> -->
+
+    <!--rongw 标签 -->
+    <view class="inputrow2" bindtap="setmytag">
+      <text>标签</text>
+      <view class="tagbox2 tagless">
+        <block wx:for="{{tagname}}">
+          <text class="tagitem">{{item}}</text>
+        </block>
+      </view>
+    </view>
+  </form>
+</view>
+</view>

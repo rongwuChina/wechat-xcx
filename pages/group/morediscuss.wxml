@@ -1,0 +1,86 @@
+<!--index.wxml-->
+<view class="">
+  <view class="groupbox" hidden="{{allgroupshow}}" bindtap="nospeakethis">
+    <!-- rongw: content -->
+    <view class="content">
+
+      <!-- rongw: 动态详情 -->
+      <view hidden="{{othergroup}}"> 
+
+        <block wx:for="{{dynamic.people.length}}" wx:for-index="key">
+          <view class="dynamicbox">
+
+            <view class="dynamiccomment">
+              <!-- rongw: 主评论 -->
+              <view class="incommentbox contain">
+
+                <view class="contentli">
+                  <view class="groupimgbox">
+                    <image class="groupimg" src="{{incomment.image}}" class="groupimg">
+                    </image>
+                  </view>
+                  <view class="groupinbox">
+                    <view class="groupinfo">
+                      <text class="ellipsis h1">{{incomment.name}}</text>
+                      <text class="h3 ellipsis">{{incomment.time}}</text>
+                    </view>
+                    <view catchtap="speakethis" id="{{incomment.userid}}">
+                      <image mode="aspectFit" style="width:32px;height:32px;margin-bottom:20px;" src="../image/speake.png"></image>
+                    </view>
+                  </view>
+                </view>
+                <view class="p2 discussbox comment">
+                  {{incomment.comment}}
+                </view>
+
+              </view>
+
+              <!-- rongw: 盖楼的评论 -->
+              <view class="recomment">
+
+                <block wx:for="{{comment.name.length}}" wx:for-index="index">
+                  <view class="contentli">
+                    <view class="groupimgbox">
+                      <image class="groupimg" src="{{comment.image[index]}}" class="groupimg">
+                      </image>
+                    </view>
+                    <view class="groupinbox">
+                      <view class="groupinfo">
+                        <text class="ellipsis h1">{{comment.name[index]}}</text>
+                        <text class="h3 ellipsis">{{comment.time[index]}}</text>
+                      </view>
+                      <view catchtap="speakethis2" id="{{index}}">
+                        <image mode="aspectFit" style="width:32px;height:32px;margin-bottom:20px;" src="../image/speake.png"></image>
+                      </view>
+
+                    </view>
+                  </view>
+                  <view class="p2 discussbox comment">
+                    <text class="p2 discussname" hidden="{{comment.commenttype[index]==null ? true : false}}">{{comment.commenttype[index]}}</text>{{comment.comment[index]}}
+                  </view>
+                </block>
+              </view>
+
+            </view>
+
+          </view>
+        </block>
+
+      </view>
+
+
+    </view>
+
+
+
+  </view>
+  <view class="commentary flexrow" hidden="{{discussthis}}">
+    <input bindinput="commentinput" value="{{mycomment}}" hidden="{{discussthis}}" class="commentinput" type="text" placeholder='{{discusstext}}' style="width:95%;margin-right:0;"></input>
+    <image hidden="{{discussthis}}" mode="aspectFit" style="width:36px;height:36px;margin-left:10px;margin-right:0;" src="../image/speake.png" catchtap='discuss' id="{{parentCommentId}}"></image>
+  </view>
+  <view class="commentary flexrow" hidden="{{discussthis2}}">
+    <input bindinput="commentinput" value="{{mycomment}}"  class="commentinput" type="text" placeholder='{{discusstext}}' style="width:95%;margin-right:0;"></input>
+    <image  mode="aspectFit" style="width:36px;height:36px;margin-left:10px;margin-right:0;" src="../image/speake.png" catchtap='discuss2' id="{{parentCommentId}}"></image>
+  </view>
+
+</view>

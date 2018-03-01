@@ -1,0 +1,24 @@
+/* pages/index/report.wxss */
+.contain{
+  margin-top:10px;
+}
+.uploadimg{
+  width:60px;
+  height:60px;
+  margin-right:10px;
+  margin-bottom:15px;
+  border:solid 1px rgb(201,201,201);
+  justify-content: center;
+}
+.uploadcamera{
+  width:60px;
+  height:60px;
+  text-align: center;
+  border:dashed 1px rgb(201,201,201);
+  margin-bottom:15px;
+}
+.uploadcamera .iconimg{
+  margin-top:16px;
+  width:30px;
+  margin-right: 0;
+}

@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="toptabbox">
+    <text class="textleft h3" decode>发布头条</text>
+    <!-- <view class="li right" bindtap="myaccount">
+      发布
+    </view> -->
+  </view>
+  <view class="contain">
+
+      <textarea name="evaContent" maxlength="500" value="{{evaContent}}" style="padding:10px 0;" placeholder="发布动态...." bindblur="charChange" bindinput='writetext'/>
+      <text catchtap="subdynamic" disabled="{{subdisabled}}" class="weui-btn mini-btn" type="primary" size="mini" style="background:none;border-radius:0;color:#333;font-size:18px;position:fixed;top:2px;z-index:400;right:20px;padding:0;">发布</text>
+      <view class="flexrow" style="flex-wrap:wrap;">
+      <block wx:for="{{uploadimg}}">
+          <view class="uploadimg" style="overflow:hidden;display:flex;align-items:center;">
+          <!-- background-image:url('{{item}}'); -->
+             <image mode="widthFix" style="width:62px" src="{{item}}"></image>
+          </view>
+      </block>    
+          <view class="uploadcamera" catchtap="chooseImageTap">
+            <image mode="widthFix" class="xd-img-user1 iconimg"  src="../image/camare.png"></image>
+          </view>
+             
+      </view>
+
+  </view>
+</view>

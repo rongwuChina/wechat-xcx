@@ -1,0 +1,295 @@
+/**index.wxss**/
+.groupstatustext .redicon{
+  text-align: center;
+}
+
+/* rongw:   group */
+.groupbox{width:100%}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.userinfo-avatar {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 20rpx;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+/* rongw: grouptag  */
+
+.tagbox{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: spacearound;
+  height:auto;
+  width:calc(100%-20);
+  padding-left:10px;
+  padding-right:10px;
+  padding-top: 10px;
+  position:fixed;
+  top:45px;
+  z-index:12;
+
+}
+
+.toptabnow{border-bottom:solid 2px #ff6607;}
+/* rongw: content  */
+.content{
+  width:100%;
+  
+}
+.contentli{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+  border-bottom:solid 2px white;  
+  background-color: white;
+  padding:5px 10px;
+  box-sizing: border-box;
+  align-items: center;
+  margin-bottom:6px;
+  position:relative;
+}
+.search__form input{
+  margin-top:5px;
+}
+.toptabbox{
+  justify-content: space-around;
+  border-bottom:0;
+}
+.tabbox{
+  font-size:16px;
+  color:#8a8a8a;
+  padding:5px 0;
+  text-align: center;
+  width:30%;
+}
+.toptabnow{
+  color:rgb(255,80,70);
+  border-bottom:solid 4px rgb(255,80,70);
+}
+
+
+
+.groupinfo{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  width:52%;
+
+}
+
+.groupstatus{
+    width:63px;
+    /* text-align:right; */
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+    justify-content:flex-end;
+    position:relative;
+}
+ .groupstatustext{
+    line-height:46px;
+    font-size:18px;
+position:fixed;
+bottom:26px;
+left:0;
+right:0;
+
+} 
+.thismygroup {
+    width:20px;
+    background:yellow;
+    height:4px;
+    position:absolute;
+    right:0;
+    top:30px;
+}
+
+
+
+/* rongw: bottom  */
+.bottombox{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  right:0;
+  text-align: center;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.bottomtap{
+  width:100%;
+  line-height: 40px;
+  background-color: #f3f5f7;
+}
+
+.bottomnow{
+  background-color: #8a8a8a;
+  color:white;
+}
+
+/* rongw: 加群申请 */
+.joingroup{
+  width:70%;
+  max-width:300px;
+  margin:0 auto;
+  border:solid 1px #333;
+  padding:10px;
+  box-sizing: border-box;
+  position: fixed;
+  top:100px;
+  z-index: 22;
+  background-color: white;
+  left:0;
+  right:0;
+}
+.joinmsg{
+  width:100%;
+  height:46px;
+  border:solid 1px #333;
+}
+.joingroupbtn{
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
+.joinbtn{
+  line-height: 35px;
+  height:35px;
+  padding:0 10px;
+  font-size: 13px;
+  width: 40%;
+  margin-top:10px; 
+}
+
+/* rongw:  myown 我的 */
+.userimage{
+  border-radius: 50%;
+}
+.myonwn{
+  width:100%;
+}
+.toptitle{
+   margin:0 auto;
+}
+.mylist{
+padding:10px 15px;
+border-bottom: solid 1px white;
+background: #f5f6f6;
+
+}
+.xiaoda{
+  margin-top:16px;
+  margin-bottom: 20px;
+  height:52px; line-height:30px;
+}
+.cardbox{
+padding:10px 15px;
+padding-bottom:0;
+
+}
+.mycard{
+  width:100%;
+  border-bottom:solid 1px #dcdcdc;
+  display: flex;
+  justify-content: space-around;
+  font-size:14px;
+  
+}
+.mycard text{
+  font-size:13px;
+}
+.li{
+  margin-bottom:6px;
+}
+.button{
+  padding:2px;
+}
+.myintro{
+  padding:6px 15px;
+  padding-bottom:15px;
+background: #f5f6f6;
+}
+.mytiding{
+  font-size:13px;
+  padding:10px 15px;
+  border-bottom:solid 1px white;
+  background: #f5f6f6;
+}
+.tidingnumb{
+  padding:6px 15px;
+  text-align: center;
+  margin-bottom:30px;
+}
+.tagbox2{
+  padding-left:15px;
+  padding-right:15px;
+}
+.textpd1{
+  margin-left:8px;
+}
+.textpd2{
+  margin-left:18px;
+}
+
+/*
+*动态圈子回复
+*系统消息
+*/
+.grouptit{
+  width:20%;
+}
+.grouptit,groupstatus{
+  width:100%;
+  overflow: hidden;
+  padding-left:12px;
+}
+.ellipsis{
+  text-overflow:ellipsis;
+  white-space:nowrap; 
+  overflow:hidden;
+}
+.groupimgbox{
+   min-width:50px;
+  width:20%;
+  /* position:relative;
+bottom:24px; */
+align-items:center;
+margin-top:20px;
+}
+.groupinbox{
+  width:80%;
+  display:flex;
+  justify-content:space-between;
+  padding:5px 10px;
+  box-sizing:border-box;
+  align-items:center;
+
+}
+.backicon, .savegroupse {
+    position:relative;
+    z-index:20;
+    width:30px;
+    height:30px;
+
+}
+
+.title{
+  width:100%;
+  line-height: 40px;
+  color:#ff6607;
+}
+
+/* pages/group/addnewpeople.wxss */

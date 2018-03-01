@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/report",
+    "pages/addgroup/addgroup",
+    "pages/addgroup/setname",
+    "pages/account/myaccount",
+    "pages/account/setaccount",
+    "pages/account/myinfo",
+    "pages/account/opinfo",
+    "pages/account/myaddrbox",
+    "pages/account/opaddrbox",
+    "pages/account/myaddrcircle",
+    "pages/account/opaddrcircle",
+    "pages/account/mycollect",
+    "pages/account/opcollect",
+    "pages/account/myvip",
+    "pages/account/opvip",
+    "pages/account/aboutus",
+    "pages/account/mydynamic",
+    "pages/group/groupdetail",
+    "pages/group/groupset",
+    "pages/group/dynamicdetail",
+    "pages/group/morediscuss",
+    "pages/group/writedynamic",
+    "pages/group/addnewpeople",
+    "pages/group/deletpeople",
+    "pages/group/fromgroup"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black",
+    "onPullDownRefresh":true
+  }
+}
